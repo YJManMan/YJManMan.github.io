@@ -16,27 +16,28 @@
   <meta name="author" content="YuJia">
   <meta name="keywords" content="blog">
   
-    <meta name="description" content="问题一：无法打开zookeeper 由于我kafka下载的版本是2.12-2.4.0,所以内置了zookeeper，不用单独下载   错误一：这个问题其实是由于我太久没有操作cmd导致的，我忘记了同盘下，切目录需要使用cd，导致系统找不到该路径  错误二：但仅仅这样还是会错误，仍然是系统找不到该路径   所以我们还需要做以下操作：   在你所对应的kafka目录下要自己手动创建两个名为”data”">
+    <meta name="description" content="组成 每个节点 &#x3D; 存储值 + 链接下一结点的引用字段  12345678 public class SinglyListNode &amp;#123;    int val;    SinglyListNode next;    SinglyListNode(int x) &amp;#123;       val &#x3D; x;     &amp;#125;&amp;#125;  操作 若从链表头一直到尾都进行一次遍历，则">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python操作Kafka错误日志">
-<meta property="og:url" content="http://yjmanman.github.io/2023/11/23/Python%E6%93%8D%E4%BD%9CKafka/index.html">
+<meta property="og:title" content="单链表">
+<meta property="og:url" content="http://yjmanman.github.io/2024/04/20/%E5%8D%95%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="阳江漫漫&#39;BLOG">
-<meta property="og:description" content="问题一：无法打开zookeeper 由于我kafka下载的版本是2.12-2.4.0,所以内置了zookeeper，不用单独下载   错误一：这个问题其实是由于我太久没有操作cmd导致的，我忘记了同盘下，切目录需要使用cd，导致系统找不到该路径  错误二：但仅仅这样还是会错误，仍然是系统找不到该路径   所以我们还需要做以下操作：   在你所对应的kafka目录下要自己手动创建两个名为”data”">
+<meta property="og:description" content="组成 每个节点 &#x3D; 存储值 + 链接下一结点的引用字段  12345678 public class SinglyListNode &amp;#123;    int val;    SinglyListNode next;    SinglyListNode(int x) &amp;#123;       val &#x3D; x;     &amp;#125;&amp;#125;  操作 若从链表头一直到尾都进行一次遍历，则">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.imgs.ovh/2023/11/26/Mq6h2.md.png">
-<meta property="og:image" content="https://i.imgs.ovh/2023/11/26/MqWzj.png">
-<meta property="og:image" content="https://i.imgs.ovh/2023/11/26/MqB6V.png">
-<meta property="og:image" content="https://i.imgs.ovh/2023/11/26/Mq0CI.png">
-<meta property="article:published_time" content="2023-11-23T15:14:18.927Z">
-<meta property="article:modified_time" content="2024-04-20T11:09:05.823Z">
+<meta property="og:image" content="https://s21.ax1x.com/2024/04/20/pkSXusP.png">
+<meta property="og:image" content="https://s21.ax1x.com/2024/04/20/pkSXldS.jpg">
+<meta property="og:image" content="https://s21.ax1x.com/2024/04/20/pkSX1Ig.md.jpg">
+<meta property="og:image" content="https://s21.ax1x.com/2024/04/20/pkSXJRs.png">
+<meta property="og:image" content="https://s21.ax1x.com/2024/04/20/pkSXYzn.md.jpg">
+<meta property="article:published_time" content="2024-04-20T11:10:00.855Z">
+<meta property="article:modified_time" content="2024-04-20T11:20:36.043Z">
 <meta property="article:author" content="玉佳 秦">
-<meta property="article:tag" content="error">
+<meta property="article:tag" content="DataStructure">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.imgs.ovh/2023/11/26/Mq6h2.md.png">
+<meta name="twitter:image" content="https://s21.ax1x.com/2024/04/20/pkSXusP.png">
   
   
   
-  <title>Python操作Kafka错误日志 - 阳江漫漫&#39;BLOG</title>
+  <title>单链表 - 阳江漫漫&#39;BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Python操作Kafka错误日志"></span>
+            <span id="subtitle" data-typed-text="单链表"></span>
           
         </div>
 
@@ -213,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-23 23:14" pubdate>
-          2023年11月23日 晚上
+        <time datetime="2024-04-20 19:10" pubdate>
+          2024年4月20日 晚上
         </time>
       </span>
     
@@ -236,7 +237,7 @@
         
         
         
-          15 分钟
+          14 分钟
         
       </span>
     
@@ -273,53 +274,57 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Python操作Kafka错误日志</h1>
+            <h1 id="seo-header">单链表</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="问题一：无法打开zookeeper"><a href="#问题一：无法打开zookeeper" class="headerlink" title="问题一：无法打开zookeeper"></a>问题一：无法打开zookeeper</h2><blockquote>
-<p>由于我kafka下载的版本是2.12-2.4.0,所以内置了zookeeper，不用单独下载</p>
+                <h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><blockquote>
+<p>每个节点 &#x3D; 存储值 + 链接下一结点的引用字段</p>
 </blockquote>
-<ul>
-<li><p>错误一：这个问题其实是由于我太久没有操作cmd导致的，我忘记了同盘下，切目录需要使用cd，导致系统找不到该路径</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs Java"> <br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SinglyListNode</span> &#123;<br>    <span class="hljs-type">int</span> val;<br>    SinglyListNode next;<br>    SinglyListNode(<span class="hljs-type">int</span> x) &#123; <br>      val = x; <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><blockquote>
+<p>若从链表头一直到尾都进行一次遍历，则需要O(N)时间，效率太低，那么该如何提升速度呢？多加一个变量－－头结点是一个很好的办法(头结点一般不设置值)。</p>
+</blockquote>
+<h3 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h3><p>时间复杂度O(1)</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pkSXusP"><img src="https://s21.ax1x.com/2024/04/20/pkSXusP.png" srcset="/img/loading.gif" lazyload alt="pkSXusP.png"></a></p>
+<p>要想插入一个新结点，我们只需要让新结点(cur)的指针先指向想插入地方的后者(next)，再让前者(prev)的指针指向新的结点(cur)，这样一个新的链接就形成了，是不是非常简单！</p>
+<p>注意：一定要让新结点先与后方的结点连接上，试想看，如果先让prev直接指向cur会发生什么事情呢？直接进行连接的时候我们会发现，next直接会断掉，如果我们再想让cur连接上next是不是就于事无补了，这下好啦，根本就找不到next在哪里了(扶额苦笑)，如图</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pkSXldS"><img src="https://s21.ax1x.com/2024/04/20/pkSXldS.jpg" srcset="/img/loading.gif" lazyload alt="pkSXldS.jpg"></a></p>
+<p>那假如我们有的时候就会忘记先连接后边怎么办呢，没关系！！！这有什么难的</p>
+<p>我们直接先对这串链表进行一个存储的大动作，用另一个变量存起来，这样我想用就可以用咯，相当于拿了一个备份（虽然说浪费了一定的空间，但是不会再弄丢啦）</p>
+<h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h3><p>时间复杂度O(N)</p>
+<p>懂了插入操作之后，删除操作就更好理解了，操作链表的本质就是改变指针(引用)</p>
+<p>我们假设想删除某一结点x，意思就是想要在链表中将x刨除，那么我们直接让指针越过该结点不就好了，让x的前指针(a)直接指向他的下一个结点(b)即可，删除操作就是这么简单！</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pkSX1Ig"><img src="https://s21.ax1x.com/2024/04/20/pkSX1Ig.md.jpg" srcset="/img/loading.gif" lazyload alt="pkSX1Ig.md.jpg"></a></p>
+<h2 id="特殊位置的增删改查"><a href="#特殊位置的增删改查" class="headerlink" title="特殊位置的增删改查"></a>特殊位置的增删改查</h2><h3 id="在开头增加结点"><a href="#在开头增加结点" class="headerlink" title="在开头增加结点"></a>在开头增加结点</h3><p>我们知道，头结点是链表在增删改查提高效率的一大关键，那么如果我们想要在某个链表的开头更新节点，应该怎么办呢</p>
+<p>直接三步走</p>
+<ol>
+<li><p>初始化一个新结点 cur ；</p>
 </li>
-<li><p>错误二：但仅仅这样还是会错误，仍然是系统找不到该路径</p>
-<p>  所以我们还需要做以下操作：</p>
-<p>  在你所对应的kafka目录下要自己手动创建两个名为”data”和”logs”的文件夹，方便后续安排路径</p>
-<p>  <a target="_blank" rel="noopener" href="https://imgloc.com/image/Mq6h2"><img src="https://i.imgs.ovh/2023/11/26/Mq6h2.md.png" srcset="/img/loading.gif" lazyload alt="Mq6h2.md.png"></a></p>
-<p>  接着，打开config&#x2F;zookeeper.properties(使用vscode或者记事本打开都可以)，我们来改一下配置，红框中是你所需要改的，默认是tmp什么的，改成刚刚手动创建的data文件位置即可；同时注意观察下面的客户端口号是否为2181(zookeeper默认就是这个，有些博主说只要改成对应的端口号就都可以使用，我没改)</p>
-<p>  <img src="https://i.imgs.ovh/2023/11/26/MqWzj.png" srcset="/img/loading.gif" lazyload alt="MqWzj.png"></p>
-<p>  下一步，打开config&#x2F;server.properties，同样也是更改配置，同理，也要检查好你的地址和端口号</p>
-<p>  <img src="https://i.imgs.ovh/2023/11/26/MqB6V.png" srcset="/img/loading.gif" lazyload alt="MqB6V.png"></p>
-<p>  <img src="https://i.imgs.ovh/2023/11/26/Mq0CI.png" srcset="/img/loading.gif" lazyload alt="Mq0CI.png"></p>
+<li><p>将新结点的后继指向头结点的后继；</p>
 </li>
-<li><p>错误三：然后我们再来尝试打开，结果是kafka正常打开，zookeeper仍然找不到路径，这是为什么呢？于是我通过搜索找到了问题的原因：由于kafka是使用Java进行编写的，所以，应该是Java环境存在问题 <strong>↓</strong></p>
-<p>  参考文章<a target="_blank" rel="noopener" href="https://blog.csdn.net/GoodburghCottage/article/details/125896525">Windows10下安装Kafka超级详细的教程（包含安装过程中遇到的问题和解决办法）</a></p>
-<p>  解决方法：打开 kafka\bin\windows\kafka-run-class.bat ⽂件。</p>
+<li><p>将头结点后继指向新结点 。</p>
 </li>
-</ul>
-<p>进⼊kafka⽬录 ，打开上⾯说到的这个⽂件，查找后的内容如下所⽰。</p>
-<pre><code class="hljs">&lt;img src=&quot;https://i.imgs.ovh/2023/11/26/MqIcJ.png&quot; alt=&quot;MqIcJ.png&quot; border=&quot;0&quot;&gt;
-</code></pre>
-<p>具体原因请看这个博主的说法<a target="_blank" rel="noopener" href="https://blog.csdn.net/VinceZxy/article/details/100153085">.\bin\windows\kafka-server-start.bat .\config\server.properties 系统找不到指定路径，启动zookeeper时候闪退</a></p>
-<p>雀食，我的原因也是这个，由于已经在Java环境中写了&#x2F;bin，查找路径的时候仍然写上了&#x2F;bin，结果路径就变成了&#x2F;bin&#x2F;bin，自然就找不到路径了</p>
-<h2 id="问题二：操作Kafka写代码报错"><a href="#问题二：操作Kafka写代码报错" class="headerlink" title="问题二：操作Kafka写代码报错"></a>问题二：操作Kafka写代码报错</h2><p>zookeeper和kafka都已经启动就绪</p>
-<p>错误一：一定要注意是否打开了MySQL服务，数据库是否连接好，参数配置是否设置正确</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Python">conn = pymysql.connect(host=<span class="hljs-string">&#x27;localhost&#x27;</span>, user=<span class="hljs-string">&#x27;root&#x27;</span>, password=<span class="hljs-string">&#x27;your_password&#x27;</span>, database=<span class="hljs-string">&#x27;数据采集与处理&#x27;</span>)<br></code></pre></td></tr></table></figure>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pkSXJRs"><img src="https://s21.ax1x.com/2024/04/20/pkSXJRs.png" srcset="/img/loading.gif" lazyload alt="pkSXJRs.png"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">headInsert</span><span class="hljs-params">(<span class="hljs-type">int</span> data)</span>&#123;<br>  <span class="hljs-type">Node</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>(data);<br>  n.next = head.next;<br>  head.next = n;<br>  <span class="hljs-comment">//head.next = new Node(data,head.next);</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>错误二：字段类型为data无法被自动处理成json格式，需要函数strftime()转换成字符串格式</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-string">&#x27;birthday&#x27;</span>: row[<span class="hljs-number">3</span>].strftime(<span class="hljs-string">&#x27;%Y-%m-%d&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="删除第一个结点"><a href="#删除第一个结点" class="headerlink" title="删除第一个结点"></a>删除第一个结点</h3><p>在已有链表上删除第一个结点</p>
+<p>这还不简单，直接让头结点指向第二个节点即可</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pkSXYzn"><img src="https://s21.ax1x.com/2024/04/20/pkSXYzn.md.jpg" srcset="/img/loading.gif" lazyload alt="pkSXYzn.md.jpg"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">removeFirst</span><span class="hljs-params">()</span>&#123;<br>  <span class="hljs-type">Node</span> <span class="hljs-variable">first</span> <span class="hljs-operator">=</span> head.next;<br>  head.next = first.next;<br>  <span class="hljs-comment">//head.next = head.next.next;</span><br> &#125;<br></code></pre></td></tr></table></figure>
 
-<p>错误三：如果像以下这么写会报错</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Python">producer = KafkaProducer(bootstrap_servers=<span class="hljs-string">&#x27;localhost:9092&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="在末尾插入结点"><a href="#在末尾插入结点" class="headerlink" title="在末尾插入结点"></a>在末尾插入结点</h3><p>这似乎比在开始的操作要复杂一些，但如果我们定义一个临时指针，让他做一个索引标记，指向实时位置，我们就知道现在遍历到何处了，这样就方便在尾巴进行插入操作啦</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">tailInsert</span><span class="hljs-params">(<span class="hljs-type">int</span> data)</span>&#123;<br>  <span class="hljs-type">Node</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> head;<br>  <span class="hljs-comment">//遍历到结尾处</span><br>  <span class="hljs-keyword">while</span>(temp.next!=<span class="hljs-literal">null</span>)&#123;<br>    temp = temp.next;<br>    &#125;<br>  <span class="hljs-type">Node</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>(data);<br>  cur = temp.next;<br>  <span class="hljs-comment">//temp.next = new Node(data,null)</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>可以多加一个api(api版本就是你的kafka对应版本)  <strong>↓</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Python">producer = KafkaProducer(bootstrap_servers=<span class="hljs-string">&#x27;localhost:9092&#x27;</span>, api_version=(<span class="hljs-number">2</span>, <span class="hljs-number">12</span>, <span class="hljs-number">2</span>))<br></code></pre></td></tr></table></figure>
+<h3 id="删除末尾结点"><a href="#删除末尾结点" class="headerlink" title="删除末尾结点"></a>删除末尾结点</h3><p>同理基础操作是遍历,但遍历只能让temp定位到最后一个结点，如果需要删除最后一个节点只能找到倒数第二个节点，让他的后继为空才行，于是需要多加一个变量找到temp的前一个结点（链表长度为空直接返回）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">removeLast</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-keyword">if</span>(head.next==<span class="hljs-literal">null</span>)&#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-type">Node</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> head.next;<br>    <span class="hljs-type">Node</span> <span class="hljs-variable">prev</span> <span class="hljs-operator">=</span> head;<br>    <span class="hljs-keyword">while</span>(temp.next!=<span class="hljs-literal">null</span>)&#123;<br>        prev = temp;<br>        temp = temp.next;<br>    &#125;<br>    prev.next = <span class="hljs-literal">null</span>; <br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h2 id="未解决问题"><a href="#未解决问题" class="headerlink" title="未解决问题"></a>未解决问题</h2><p>每次打印直接输出整个消息，无法每行分开打印（整个写循环改打印规则，不想改了）</p>
-<p>kafka_2.12-2.4.0\bin\windows&gt;kafka-server-start.bat ….\config&#x2F;server.properties</p>
-<p>kafka_2.12-2.4.0\bin\windows&gt;zookeeper-server-start.bat ….\config&#x2F;zookeeper.properties</p>
+<blockquote>
+<p>头插头删 → 栈 </p>
+</blockquote>
 
                 
               </div>
@@ -338,7 +343,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E9%94%99%E8%AF%AF%E6%97%A5%E5%BF%97/" class="category-chain-item">错误日志</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
   
   
 
@@ -353,7 +358,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/error/" class="print-no-link">#error</a>
+        <a href="/tags/DataStructure/" class="print-no-link">#DataStructure</a>
       
     </div>
   
@@ -365,8 +370,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Python操作Kafka错误日志</div>
-      <div>http://yjmanman.github.io/2023/11/23/Python操作Kafka/</div>
+      <div>单链表</div>
+      <div>http://yjmanman.github.io/2024/04/20/单链表/</div>
     </div>
     <div class="license-meta">
       
@@ -378,7 +383,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月23日</div>
+          <div>2024年4月20日</div>
         </div>
       
       
@@ -410,9 +415,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/28/%E5%A4%9A%E4%BA%BA%E4%B8%8A%E4%BC%A0%E5%AF%BC%E8%87%B4Git%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="多人上传导致Git冲突问题解决">
+                      <a href="/2024/04/20/%E5%8F%8C%E9%93%BE%E8%A1%A8/" title="双链表">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">多人上传导致Git冲突问题解决</span>
+                        <span class="hidden-mobile">双链表</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -420,8 +425,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/23/hello-world/" title="Hello World">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2023/12/28/%E5%A4%9A%E4%BA%BA%E4%B8%8A%E4%BC%A0%E5%AF%BC%E8%87%B4Git%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/" title="多人上传导致Git冲突问题解决">
+                        <span class="hidden-mobile">多人上传导致Git冲突问题解决</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
