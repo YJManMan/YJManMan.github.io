@@ -16,25 +16,22 @@
   <meta name="author" content="YuJia">
   <meta name="keywords" content="blog">
   
-    <meta name="description" content="结构在单链表基础上增加向前的指针，使我们能够知道该结点的前后结点的信息 操作插入操作时间复杂度O(1) 直接把当前结点的prev指向前驱，next指向后继；再将前驱的next和后继的prev指向当前结点，插入操作结束！  删除操作时间复杂度O(1) 将指向当前结点的next指针指向当前结点的后继； cur.next.prev &#x3D; cur.prev; 将指向当前结点的prev指针指向当前结点的前驱；">
+    <meta name="description" content="在搭建Hadoop伪分布式环境时，有一个不查不知道的操作 是基于Linux操作系统上的  当我们进行vi etc&#x2F;profile时会弹出一个环境变量的东东  我们的目的是修改它，那么该如何操作呢？ ↓↓↓  首先我们要知道几个内容   vi：是Linux系统内置的文本编辑器，通过这个指令可以编辑文件  etc&#x2F;profile：永久性的环境变量，是全局变量，&#x2F;etc&amp;#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="双链表">
-<meta property="og:url" content="http://yjmanman.github.io/2024/04/20/%E5%8F%8C%E9%93%BE%E8%A1%A8/index.html">
+<meta property="og:title" content="Hadoop编辑系统文件">
+<meta property="og:url" content="http://yjmanman.github.io/2024/04/20/Hadoop%E7%BC%96%E8%BE%91%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6/index.html">
 <meta property="og:site_name" content="阳江漫漫&#39;BLOG">
-<meta property="og:description" content="结构在单链表基础上增加向前的指针，使我们能够知道该结点的前后结点的信息 操作插入操作时间复杂度O(1) 直接把当前结点的prev指向前驱，next指向后继；再将前驱的next和后继的prev指向当前结点，插入操作结束！  删除操作时间复杂度O(1) 将指向当前结点的next指针指向当前结点的后继； cur.next.prev &#x3D; cur.prev; 将指向当前结点的prev指针指向当前结点的前驱；">
+<meta property="og:description" content="在搭建Hadoop伪分布式环境时，有一个不查不知道的操作 是基于Linux操作系统上的  当我们进行vi etc&#x2F;profile时会弹出一个环境变量的东东  我们的目的是修改它，那么该如何操作呢？ ↓↓↓  首先我们要知道几个内容   vi：是Linux系统内置的文本编辑器，通过这个指令可以编辑文件  etc&#x2F;profile：永久性的环境变量，是全局变量，&#x2F;etc&amp;#">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s21.ax1x.com/2024/04/20/pkSXhdO.md.jpg">
-<meta property="og:image" content="https://s21.ax1x.com/2024/04/20/pkSX4oD.md.jpg">
-<meta property="article:published_time" content="2024-04-20T11:22:31.648Z">
-<meta property="article:modified_time" content="2024-04-20T11:25:20.965Z">
+<meta property="article:published_time" content="2024-04-20T14:21:35.753Z">
+<meta property="article:modified_time" content="2024-04-20T14:23:42.473Z">
 <meta property="article:author" content="玉佳 秦">
-<meta property="article:tag" content="DataStructure">
+<meta property="article:tag" content="error">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s21.ax1x.com/2024/04/20/pkSXhdO.md.jpg">
   
   
   
-  <title>双链表 - 阳江漫漫&#39;BLOG</title>
+  <title>Hadoop编辑系统文件 - 阳江漫漫&#39;BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="双链表"></span>
+            <span id="subtitle" data-typed-text="Hadoop编辑系统文件"></span>
           
         </div>
 
@@ -211,7 +208,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-20 19:22" pubdate>
+        <time datetime="2024-04-20 22:21" pubdate>
           2024年4月20日 晚上
         </time>
       </span>
@@ -223,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          214 字
+          504 字
         
       </span>
     
@@ -234,7 +231,7 @@
         
         
         
-          2 分钟
+          5 分钟
         
       </span>
     
@@ -271,21 +268,39 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">双链表</h1>
+            <h1 id="seo-header">Hadoop编辑系统文件</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>在单链表基础上增加向前的指针，使我们能够知道该结点的前后结点的信息</p>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h3><p>时间复杂度O(1)</p>
-<p>直接把当前结点的prev指向前驱，next指向后继；再将前驱的next和后继的prev指向当前结点，插入操作结束！</p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pkSXhdO"><img src="https://s21.ax1x.com/2024/04/20/pkSXhdO.md.jpg" srcset="/img/loading.gif" lazyload alt="pkSXhdO.md.jpg"></a></p>
-<h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h3><p>时间复杂度O(1)</p>
-<p>将指向当前结点的next指针指向当前结点的后继；</p>
-<p><code>cur.next.prev = cur.prev;</code></p>
-<p>将指向当前结点的prev指针指向当前结点的前驱；</p>
-<p><code>cur.prev.next = cur.next;</code></p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/pkSX4oD"><img src="https://s21.ax1x.com/2024/04/20/pkSX4oD.md.jpg" srcset="/img/loading.gif" lazyload alt="pkSX4oD.md.jpg"></a></p>
+                <p>在搭建Hadoop伪分布式环境时，有一个不查不知道的操作</p>
+<p>是基于Linux操作系统上的</p>
+<blockquote>
+<p>当我们进行vi etc&#x2F;profile时会弹出一个环境变量的东东</p>
+</blockquote>
+<p>我们的目的是修改它，那么该如何操作呢？ ↓↓↓</p>
+<ol>
+<li>首先我们要知道几个内容</li>
+</ol>
+<ul>
+<li><p>vi：是Linux系统内置的文本编辑器，通过这个指令可以编辑文件</p>
+</li>
+<li><p>etc&#x2F;profile：永久性的环境变量，是全局变量，&#x2F;etc&#x2F;profile.d&#x2F; 设置对所有用户生效（实际上还是比较类似于我们Java配环境变量的）</p>
+</li>
+</ul>
+<p>那也就是说我们只是弹出来一个文件，跟正常Windows的操作一样，一样有编辑修改和保存关闭等等的功能</p>
+<ol>
+<li>vi这些操作必须通过指令完成，而不是鼠标简简单单就可以操作</li>
+</ol>
+<ul>
+<li><p>i(insert)：直接在文件界面按i键就可以进行修改操作，页面下也可以看到“插入”二字</p>
+</li>
+<li><p>按下Esc(就是键盘左上角的键位)：这个就是类似于输入命令的前置操作，如果不按是无法输入命令的(输入模式是不可以直接切换到编辑模式的，<strong>需要先按下 Esc键回到命令模式</strong>，此时左下角的 – INSERT – 会消失)</p>
+</li>
+<li><p>:wq：表示保存并退出文件</p>
+</li>
+</ul>
+<p>这样一系列操作后才能回到我们最初的页面，并且执行其他命令啦</p>
 
                 
               </div>
@@ -304,7 +319,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  <a href="/categories/%E9%94%99%E8%AF%AF%E6%97%A5%E5%BF%97/" class="category-chain-item">错误日志</a>
   
   
 
@@ -319,7 +334,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/DataStructure/" class="print-no-link">#DataStructure</a>
+        <a href="/tags/error/" class="print-no-link">#error</a>
       
     </div>
   
@@ -331,8 +346,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>双链表</div>
-      <div>http://yjmanman.github.io/2024/04/20/双链表/</div>
+      <div>Hadoop编辑系统文件</div>
+      <div>http://yjmanman.github.io/2024/04/20/Hadoop编辑系统文件/</div>
     </div>
     <div class="license-meta">
       
@@ -376,18 +391,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/20/Hadoop%E7%BC%96%E8%BE%91%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6/" title="Hadoop编辑系统文件">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hadoop编辑系统文件</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/20/%E5%8D%95%E9%93%BE%E8%A1%A8/" title="单链表">
-                        <span class="hidden-mobile">单链表</span>
+                      <a href="/2024/04/20/%E5%8F%8C%E9%93%BE%E8%A1%A8/" title="双链表">
+                        <span class="hidden-mobile">双链表</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
