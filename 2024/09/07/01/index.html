@@ -16,22 +16,22 @@
   <meta name="author" content="YuJia">
   <meta name="keywords" content="blog">
   
-    <meta name="description" content="在搭建Hadoop伪分布式环境时，有一个不查不知道的操作 是基于Linux操作系统上的  当我们进行vi etc&#x2F;profile时会弹出一个环境变量的东东  我们的目的是修改它，那么该如何操作呢？ ↓↓↓  首先我们要知道几个内容   vi：是Linux系统内置的文本编辑器，通过这个指令可以编辑文件  etc&#x2F;profile：永久性的环境变量，是全局变量，&#x2F;etc&amp;#">
+    <meta name="description" content="指针OJ用户名：中文名字 密码：123456 C基础程序框架1234567891011121314151617#include&lt;stdio.h&gt;&#x2F;&#x2F;头文件，相当于java的import&#x2F;&#x2F;&quot;#&quot;代表预处理命令&#x2F;&#x2F;std：标准   i-input 输入   o-output 输出&#x2F;*1.&quot;&quot;：先从当前目录（项目目录下）寻找，再从系统配置的环境路径下">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hadoop编辑系统文件">
-<meta property="og:url" content="http://yjmanman.github.io/2024/04/20/Hadoop%E7%BC%96%E8%BE%91%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6/index.html">
+<meta property="og:title" content="1">
+<meta property="og:url" content="http://yjmanman.github.io/2024/09/07/01/index.html">
 <meta property="og:site_name" content="阳江漫漫&#39;BLOG">
-<meta property="og:description" content="在搭建Hadoop伪分布式环境时，有一个不查不知道的操作 是基于Linux操作系统上的  当我们进行vi etc&#x2F;profile时会弹出一个环境变量的东东  我们的目的是修改它，那么该如何操作呢？ ↓↓↓  首先我们要知道几个内容   vi：是Linux系统内置的文本编辑器，通过这个指令可以编辑文件  etc&#x2F;profile：永久性的环境变量，是全局变量，&#x2F;etc&amp;#">
+<meta property="og:description" content="指针OJ用户名：中文名字 密码：123456 C基础程序框架1234567891011121314151617#include&lt;stdio.h&gt;&#x2F;&#x2F;头文件，相当于java的import&#x2F;&#x2F;&quot;#&quot;代表预处理命令&#x2F;&#x2F;std：标准   i-input 输入   o-output 输出&#x2F;*1.&quot;&quot;：先从当前目录（项目目录下）寻找，再从系统配置的环境路径下">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-20T14:21:35.753Z">
-<meta property="article:modified_time" content="2024-04-20T14:23:42.473Z">
+<meta property="article:published_time" content="2024-09-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-27T09:53:51.767Z">
 <meta property="article:author" content="玉佳 秦">
-<meta property="article:tag" content="error">
+<meta property="article:tag" content="base">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hadoop编辑系统文件 - 阳江漫漫&#39;BLOG</title>
+  <title>1 - 阳江漫漫&#39;BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hadoop编辑系统文件"></span>
+            <span id="subtitle" data-typed-text="1"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-20 22:21" pubdate>
-          2024年4月20日 晚上
+        <time datetime="2024-09-07 00:00" pubdate>
+          2024年9月7日 凌晨
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          504 字
+          2.1k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          5 分钟
+          18 分钟
         
       </span>
     
@@ -268,40 +268,100 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hadoop编辑系统文件</h1>
+            <h1 id="seo-header">1</h1>
             
             
               <div class="markdown-body">
                 
-                <p>在搭建Hadoop伪分布式环境时，有一个不查不知道的操作</p>
-<p>是基于Linux操作系统上的</p>
-<blockquote>
-<p>当我们进行vi etc&#x2F;profile时会弹出一个环境变量的东东</p>
-</blockquote>
-<p>我们的目的是修改它，那么该如何操作呢？ ↓↓↓</p>
-<ol>
-<li>首先我们要知道几个内容</li>
-</ol>
-<ul>
-<li><p>vi：是Linux系统内置的文本编辑器，通过这个指令可以编辑文件</p>
-</li>
-<li><p>etc&#x2F;profile：永久性的环境变量，是全局变量，&#x2F;etc&#x2F;profile.d&#x2F; 设置对所有用户生效（实际上还是比较类似于我们Java配环境变量的）</p>
-</li>
-</ul>
-<p>那也就是说我们只是弹出来一个文件，跟正常Windows的操作一样，一样有编辑修改和保存关闭等等的功能</p>
-<ol>
-<li>vi这些操作必须通过指令完成，而不是鼠标简简单单就可以操作</li>
-</ol>
-<ul>
-<li><p>i(insert)：直接在文件界面按i键就可以进行修改操作，页面下也可以看到“插入”二字</p>
-</li>
-<li><p>按下Esc(就是键盘左上角的键位)：这个就是类似于输入命令的前置操作，如果不按是无法输入命令的(输入模式是不可以直接切换到编辑模式的，<strong>需要先按下 Esc键回到命令模式</strong>，此时左下角的 – INSERT – 会消失)</p>
-</li>
-<li><p>:wq：表示保存并退出文件</p>
-</li>
-</ul>
-<p>这样一系列操作后才能回到我们最初的页面，并且执行其他命令啦</p>
+                <h1 id="指针OJ"><a href="#指针OJ" class="headerlink" title="指针OJ"></a>指针OJ</h1><p>用户名：中文名字</p>
+<p>密码：123456</p>
+<h1 id="C基础程序框架"><a href="#C基础程序框架" class="headerlink" title="C基础程序框架"></a><strong>C基础程序框架</strong></h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-comment">//头文件，相当于java的import</span><br><span class="hljs-comment">//&quot;#&quot;代表预处理命令</span><br><span class="hljs-comment">//std：标准   i-input 输入   o-output 输出</span><br><span class="hljs-comment">/*1.&quot;&quot;：先从当前目录（项目目录下）寻找，再从系统配置的环境路径下寻找</span><br><span class="hljs-comment">2.&lt;&gt;：从系统配置的环境路径下寻找</span><br><span class="hljs-comment">二者区别比较：编译速度慢，运行速度相同</span><br><span class="hljs-comment">*/</span><br><br><span class="hljs-comment">// 有且仅有一个主函数</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>	<span class="hljs-type">int</span> a;    <br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;a);<span class="hljs-comment">//&amp;：取址符（在输入时无论什么格式都要使用）</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, a);<br>    <span class="hljs-comment">// printf() 输出[print打印输出  format格式]   scanf() 输入</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+
+
+<h1 id="C-基础程序框架"><a href="#C-基础程序框架" class="headerlink" title="C++基础程序框架"></a>C++基础程序框架</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-comment">// i-input 输入  o-output 输出  stream 流</span><br><br><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">// using 使用  namespace 命名空间  std 标准   整句意义- 使用标准命名空间</span><br><br><br><span class="hljs-comment">// 入口函数（主函数）有且仅有一个</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<span class="hljs-comment">// 括号内可以进行传参 1.传入参数的个数 2.传入的参数</span><br>    <span class="hljs-type">int</span> a;<br>    cin &gt;&gt;;<br>    cout &lt;&lt;;<br>    <span class="hljs-comment">// cin 输入   cout 输出</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<span class="hljs-comment">//1.返回（结束）函数 2.返回值</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="注释理解"><a href="#注释理解" class="headerlink" title="注释理解"></a>注释理解</h1><ul>
+<li><p>&#x3D;&#x3D;单行注释&#x3D;&#x3D;<code>// </code></p>
+</li>
+<li><p>&#x3D;&#x3D;多行注释&#x3D;&#x3D;</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs /*">/*<br>32132<br>654564<br>*/<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>编译器怎么理解注释？&#x3D;&#x3D;空格&#x3D;&#x3D;</li>
+<li>编译的时候怎么处理注释？&#x3D;&#x3D;在预处理阶段会将注释删除&#x3D;&#x3D;</li>
+</ul>
+<h1 id="变量类型-变量名"><a href="#变量类型-变量名" class="headerlink" title="变量类型 变量名"></a>变量类型 变量名</h1><p><code>int a;</code></p>
+<ul>
+<li><p>int 整数类型（整型） </p>
+<p>int <strong>4</strong>个字节 <strong>32</strong>比特    0000 0000 … 0000 0000<br>1个符号位（首位）    0表示正数  1表示负数  31个数值位（带符号）</p>
+<p>范围： -2^31 ~ 2^31 - 1<br>例： &#x2F;&#x2F; 变量a、b存储整数<br>     &#x2F;&#x2F; &#x3D; 赋值运算符，等号右边赋值给等号左边<br> <code>int a = 10, b = 20;</code></p>
+</li>
+<li><p>float 单精度浮点数类型</p>
+<p>精度<strong>6-7</strong>位 <strong>4</strong>个字节</p>
+</li>
+<li><p>double 双精度浮点数类型 </p>
+<p>精度<strong>15-16</strong>位 <strong>8</strong>个字节<br>若遇浮点数，首选double</p>
+</li>
+</ul>
+<h1 id="格式化占位符"><a href="#格式化占位符" class="headerlink" title="格式化占位符"></a>格式化占位符</h1><ul>
+<li><p>int:%d    char:%c    float:%f    double:%lf </p>
+</li>
+<li><p><code>scanf(&quot;%d%d&quot;, &amp;a, &amp;b); // &amp;：取地址符号</code></p>
+</li>
+</ul>
+<p>​       <code>printf(&quot;a = %d， b = %d&quot;, a, b); // 输出效果： a = 10, b = 20</code></p>
+<ul>
+<li><p>%n.m</p>
+<ul>
+<li>n：表示宽度（整数位数+小数点(.)+小数位数）</li>
+</ul>
+<p>限制宽度 &gt; 实际宽度：左边补空格，如果n前面加0，则左边补0；如果n前面加-，右边补空格<br>限制宽度 &lt; 实际宽度：限制失效</p>
+<ul>
+<li>m：小数点后几位数</li>
+</ul>
+</li>
+</ul>
+<h1 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h1><ol>
+<li><p>构成：数字、字母、下划线</p>
+</li>
+<li><p>不能以数字开头     _1a(√)     1a(数字1开头 ×)</p>
+</li>
+<li><p>不能和关键字重名</p>
+</li>
+<li><p>区分大小写</p>
+</li>
+</ol>
+<h1 id="书写规范"><a href="#书写规范" class="headerlink" title="书写规范"></a>书写规范</h1><p>驼峰命名法：首字母小写 后面的每个单词的首字母大写 </p>
+<p>myWechatUserId</p>
+<h1 id="强转"><a href="#强转" class="headerlink" title="强转"></a>强转</h1><ul>
+<li>C语言<code>(double)a</code></li>
+<li>C++<code>double(a)</code></li>
+</ul>
+<p>隐式类型转换</p>
+<ul>
+<li><p>简单类型向复杂类型转换</p>
+</li>
+<li><p>向长度更长的方向转换</p>
+</li>
+<li><p>向精度更高的方向转换</p>
+<p>例：double b, c;<br>&#x2F;&#x2F; 以赋值运算符左边类型为准 ，最后类型依然是int</p>
+<p>int a &#x3D; b + c;<br>&#x2F;&#x2F; 类型兼容</p>
+</li>
+</ul>
+<h1 id="课堂练习：001-输出Hello-World"><a href="#课堂练习：001-输出Hello-World" class="headerlink" title="课堂练习：001 输出Hello, World!"></a>课堂练习：001 输出Hello, World!</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span>;</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello, World!&quot;</span>);<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="课堂练习：1003-电影票"><a href="#课堂练习：1003-电影票" class="headerlink" title="课堂练习：1003 电影票"></a><strong>课堂练习：1003 电影票</strong></h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>  <span class="hljs-type">int</span> x;<br>  cin &gt;&gt; x;<br>  cout &lt;&lt; x &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; x * <span class="hljs-number">10</span> &lt;&lt; endl;<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="课堂练习：1002-梯形面积"><a href="#课堂练习：1002-梯形面积" class="headerlink" title="课堂练习：1002 梯形面积"></a><strong>课堂练习：1002 梯形面积</strong></h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span> </span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">double</span> h = <span class="hljs-number">150</span> * <span class="hljs-number">2</span> / <span class="hljs-number">15</span>; <span class="hljs-comment">// 高</span><br>	<span class="hljs-type">double</span> up = <span class="hljs-number">15</span>, down = <span class="hljs-number">25</span>; <span class="hljs-comment">// 上底 下底</span><br>	<span class="hljs-comment">//int ans; // answer</span><br>	<span class="hljs-comment">//int res, ret; // result</span><br>	<span class="hljs-type">double</span> ans = (up + down) * h / <span class="hljs-number">2</span>;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%.2lf&quot;</span>, ans);<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -319,7 +379,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E9%94%99%E8%AF%AF%E6%97%A5%E5%BF%97/" class="category-chain-item">错误日志</a>
+  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="category-chain-item">编程基础</a>
   
   
 
@@ -334,7 +394,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/error/" class="print-no-link">#error</a>
+        <a href="/tags/base/" class="print-no-link">#base</a>
       
     </div>
   
@@ -346,8 +406,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hadoop编辑系统文件</div>
-      <div>http://yjmanman.github.io/2024/04/20/Hadoop编辑系统文件/</div>
+      <div>1</div>
+      <div>http://yjmanman.github.io/2024/09/07/01/</div>
     </div>
     <div class="license-meta">
       
@@ -359,7 +419,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年4月20日</div>
+          <div>2024年9月7日</div>
         </div>
       
       
@@ -391,9 +451,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/09/06/%E5%BC%95%E5%AD%90/" title="引子">
+                      <a href="/2024/09/08/02/" title="2">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">引子</span>
+                        <span class="hidden-mobile">2</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -401,8 +461,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/20/%E5%8F%8C%E9%93%BE%E8%A1%A8/" title="双链表">
-                        <span class="hidden-mobile">双链表</span>
+                      <a href="/2024/09/06/%E5%BC%95%E5%AD%90/" title="引子">
+                        <span class="hidden-mobile">引子</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

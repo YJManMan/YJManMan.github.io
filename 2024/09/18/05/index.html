@@ -1,0 +1,698 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="rgb(250, 237, 205)">
+  <meta name="author" content="YuJia">
+  <meta name="keywords" content="blog">
+  
+    <meta name="description" content="运算符的优先级C语言运算符优先级（超详细）  sizeof(表达式)：不是函数 是长度&#x3D;&#x3D;运算符&#x3D;&#x3D;  函数封装函数的好处 提高代码可维护性：修改代码功能或bug 代码复用、减少冗余代码：避免重复编写相同逻辑，一方面也能降低出错风险 便于测试：避免重复测试相同逻辑 提高代码可扩展性：与可维护性类似，便于扩展代码功能 隐藏实现细节，提高安全性（项目中更能体会到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5">
+<meta property="og:url" content="http://yjmanman.github.io/2024/09/18/05/index.html">
+<meta property="og:site_name" content="阳江漫漫&#39;BLOG">
+<meta property="og:description" content="运算符的优先级C语言运算符优先级（超详细）  sizeof(表达式)：不是函数 是长度&#x3D;&#x3D;运算符&#x3D;&#x3D;  函数封装函数的好处 提高代码可维护性：修改代码功能或bug 代码复用、减少冗余代码：避免重复编写相同逻辑，一方面也能降低出错风险 便于测试：避免重复测试相同逻辑 提高代码可扩展性：与可维护性类似，便于扩展代码功能 隐藏实现细节，提高安全性（项目中更能体会到">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-09-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-27T09:54:21.528Z">
+<meta property="article:author" content="玉佳 秦">
+<meta property="article:tag" content="base">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>5 - 阳江漫漫&#39;BLOG</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"yjmanman.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>阳江漫漫&#39;BLOG</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="5"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-09-18 00:00" pubdate>
+          2024年9月18日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          29 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">5</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="运算符的优先级"><a href="#运算符的优先级" class="headerlink" title="运算符的优先级"></a>运算符的优先级</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/huangblog/article/details/8271791">C语言运算符优先级（超详细）</a></p>
+<blockquote>
+<p>sizeof(表达式)：不是函数 是长度&#x3D;&#x3D;运算符&#x3D;&#x3D;</p>
+</blockquote>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="封装函数的好处"><a href="#封装函数的好处" class="headerlink" title="封装函数的好处"></a>封装函数的好处</h2><ul>
+<li>提高代码可维护性：修改代码功能或bug</li>
+<li>代码复用、减少冗余代码：避免重复编写相同逻辑，一方面也能降低出错风险</li>
+<li>便于测试：避免重复测试相同逻辑</li>
+<li>提高代码可扩展性：与可维护性类似，便于扩展代码功能</li>
+<li>隐藏实现细节，提高安全性（项目中更能体会到）</li>
+</ul>
+<h2 id="函数的语法定义"><a href="#函数的语法定义" class="headerlink" title="函数的语法定义"></a>函数的语法定义</h2><p>return_type function_name( parameter list )<br>{<br>   body of the function<br>}</p>
+<p>返回值类型 函数名(参数列表 变量类型 变量名, 变量类型 变量名)<br>{<br>    函数体<br>    return 返回值;<br>}</p>
+<blockquote>
+<p>void 无返回值类型 也可以有return</p>
+<p>return作用： 1.结束一个函数 2.返回一个值</p>
+</blockquote>
+<h2 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h2><p><code>return_type function_name( parameter list );</code></p>
+<p>有三种调用类型：值传递 址传递 引用调用</p>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><p>以交换两个数为例</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">func</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// return作用： 1.结束一个函数 2.返回一个值</span><br>    <span class="hljs-keyword">return</span> ;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">myswap1</span><span class="hljs-params">(<span class="hljs-type">int</span>* pa, <span class="hljs-type">int</span>* pb)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> temp;<br>	temp = *pa;<br>	*pa = *pb;<br>	*pb = temp;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">myswap2</span><span class="hljs-params">(<span class="hljs-type">int</span>** ppa, <span class="hljs-type">int</span>** ppb)</span> <span class="hljs-comment">// 形参</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span>* temp;<br>	temp = *ppa;<br>	*ppa = *ppb;<br>	*ppb = temp;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-comment">// 交换两个数</span><br>	<span class="hljs-type">int</span> a = <span class="hljs-number">10</span>, b = <span class="hljs-number">20</span>;<br>	<span class="hljs-type">int</span>* pa = &amp;a, * pb = &amp;b;<br>	cout &lt;&lt; a &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; b &lt;&lt; endl;<br>	cout &lt;&lt; pa &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; pb &lt;&lt; endl;<br>	<span class="hljs-built_in">myswap1</span>(&amp;a, &amp;b);<br>	<span class="hljs-built_in">myswap2</span>(&amp;pa, &amp;pb); <span class="hljs-comment">// 实参</span><br>	cout &lt;&lt; a &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; b &lt;&lt; endl;<br>	cout &lt;&lt; pa &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; pb &lt;&lt; endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><p><strong>房子理论</strong></p>
+<p><img src="data:image/png;base64,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" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>定义易混淆：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-type">int</span>* pa; <span class="hljs-comment">// int类型指针变量pa</span><br><span class="hljs-type">int</span> *pa; <span class="hljs-comment">// int类型指针变量pa  两者作用相同</span><br><span class="hljs-type">int</span> * pa, a, b; <span class="hljs-comment">// int类型变量a、int类型变量b、int类型指针变量pa</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>一句话学懂指针变量</strong></p>
+<h1 id="指针变量中放的是谁的地址，-指针变量就是谁"><a href="#指针变量中放的是谁的地址，-指针变量就是谁" class="headerlink" title="&#x3D;&#x3D;指针变量中放的是谁的地址，*指针变量就是谁&#x3D;&#x3D;"></a>&#x3D;&#x3D;指针变量中放的是谁的地址，*指针变量就是谁&#x3D;&#x3D;</h1><h1 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h1><h2 id="620-输出一个数的二进制有多少个1"><a href="#620-输出一个数的二进制有多少个1" class="headerlink" title="620 输出一个数的二进制有多少个1"></a>620 输出一个数的二进制有多少个1</h2><p>方法1：右移和1与</p>
+<p>遍历二进制位</p>
+<p>暴力求解，拿到这个数的二进制中的每一位，通过移位运算，让最低位按位与1。</p>
+<p>运算规则：只有两个数的二进制同时为1，结果才为1，否则为0。（负数按补码形式参加按位与运算）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br> <br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>  <span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>;<br>  <span class="hljs-type">int</span> n;<br>  cin &gt;&gt; n;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">32</span>; i++)<br>	&#123;<br>		<span class="hljs-keyword">if</span> (((n &gt;&gt; i) &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">1</span>) cnt++;<br>	&#125;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, cnt);<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>方法2：巧妙按位与</p>
+<p><code>n = n&amp;(n-1);</code> 这个表达式会让n的二进制中最右边的1就消失了。大大提高了代码效率，有多少个1，循环就进行多少次</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-comment">// n = n &amp; (n - 1)</span><br>	<span class="hljs-type">int</span> n;<br>	cin &gt;&gt; n;<br>	<span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">while</span> (n)<br>	&#123;<br>		n = n &amp; (n - <span class="hljs-number">1</span>);<br>		cnt++;<br>	&#125;<br>	cout &lt;&lt; cnt &lt;&lt; endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="1409-最大跨度值"><a href="#1409-最大跨度值" class="headerlink" title="1409 最大跨度值"></a>1409 最大跨度值</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> n;<br>	cin &gt;&gt; n;<br>	<span class="hljs-type">int</span> x, _min = <span class="hljs-number">1000</span>, _max = <span class="hljs-number">0</span>; <br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)<br>	&#123;<br>		cin &gt;&gt; x;<br>		<span class="hljs-keyword">if</span> (_max &lt; x)<br>		&#123;<br>			_max = x;<br>		&#125;<br>		<span class="hljs-keyword">if</span> (_min &gt; x)<br>		&#123;<br>			_min = x;<br>		&#125;<br>	&#125;<br>	cout &lt;&lt; _max - _min &lt;&lt; endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="1432-最大公约数"><a href="#1432-最大公约数" class="headerlink" title="1432 最大公约数"></a>1432 最大公约数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">// 最早：更相减损术（太慢了）</span><br><span class="hljs-comment">//辗转相除法（欧几里得算法）求最大公约数gcd</span><br><br><span class="hljs-comment">// a % b = c</span><br><span class="hljs-comment">// 4 % 6 = 4 a = b b = c</span><br><span class="hljs-comment">// 6 % 4 = 2</span><br><span class="hljs-comment">// 4 % 2 = 0</span><br><span class="hljs-comment">// 2   0 b为0，此时a为最大公约数</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> </span>&#123;<span class="hljs-comment">//函数的封装</span><br>	<span class="hljs-type">int</span> c = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">while</span> (b!=<span class="hljs-number">0</span>) &#123;<br>		c = a % b;<br>		a = b, b = c;<br>	&#125;<br>	<span class="hljs-keyword">return</span>	a;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-type">int</span> a, b;   cin &gt;&gt; a &gt;&gt; b;<br>	<span class="hljs-type">int</span> ans = <span class="hljs-built_in">gcd</span>(a, b);<span class="hljs-comment">//函数的调用</span><br>	cout &lt;&lt; ans &lt;&lt; endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="1407求整数的和与均值"><a href="#1407求整数的和与均值" class="headerlink" title="1407求整数的和与均值"></a><strong>1407求整数的和与均值</strong></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-type">int</span> n;<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);<br><br>	<span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>,  x;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>		 <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;x);<br>		 sum += x;<br>	&#125;<br><br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %.5lf&quot;</span>, sum, sum * <span class="hljs-number">1.0</span> / n);<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="1429计算星期几"><a href="#1429计算星期几" class="headerlink" title="1429计算星期几"></a>1429计算星期几</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-type">int</span> a, b, m = <span class="hljs-number">7</span>;<br>	cin &gt;&gt; a &gt;&gt; b;<br>	<span class="hljs-type">int</span> ans = <span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= b; i++) &#123;<br>		ans *= a % m;<br>		ans %= m;<br>	&#125;<br>	<span class="hljs-comment">//ans ==&gt; a^b%7</span><br><br>	<span class="hljs-keyword">if</span> (ans == <span class="hljs-number">0</span>) cout &lt;&lt; <span class="hljs-string">&quot;Sunday&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ans == <span class="hljs-number">1</span>) cout &lt;&lt; <span class="hljs-string">&quot;Monday&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ans == <span class="hljs-number">2</span>) cout &lt;&lt; <span class="hljs-string">&quot;Tuesday&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ans == <span class="hljs-number">3</span>) cout &lt;&lt; <span class="hljs-string">&quot;Wednesday&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ans == <span class="hljs-number">4</span>) cout &lt;&lt; <span class="hljs-string">&quot;Thursday&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ans == <span class="hljs-number">5</span>) cout &lt;&lt; <span class="hljs-string">&quot;Friday&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">else</span> cout &lt;&lt; <span class="hljs-string">&quot;Saturday&quot;</span> &lt;&lt; endl;<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="category-chain-item">编程基础</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/base/" class="print-no-link">#base</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>5</div>
+      <div>http://yjmanman.github.io/2024/09/18/05/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>YuJia</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年9月18日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/09/20/C++02/" title="C++02">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">C++02</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/09/14/C++01/" title="C++01">
+                        <span class="hidden-mobile">C++01</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
