@@ -13,28 +13,28 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="rgb(250, 237, 205)">
-  <meta name="author" content="玉佳 秦">
+  <meta name="author" content="YuJia">
   <meta name="keywords" content="blog">
   
-    <meta name="description" content="title: 图论基础author: YuJiacategories: 算法comment: ‘valine’tags: [algorithm]date: 2025-2-6 图论基础定义由顶点v和边e构成的集合，记G&#x3D;(v,e) 其他重要概念 路径：一个顶点到达另一个顶点途径的点构成的序列  边权：边的权重（在不同场景下意义不同） 在求最短路问题中，权重可以代表距离；在网络流问题中，权重">
+    <meta name="description" content="图论基础定义由顶点v和边e构成的集合，记G&#x3D;(v,e) 其他重要概念 路径：一个顶点到达另一个顶点途径的点构成的序列  边权：边的权重（在不同场景下意义不同） 在求最短路问题中，权重可以代表距离；在网络流问题中，权重可以代表流量…   分类有向图、无向图、有权图、无权图、连通图······ 应用导航、网络拓扑图、电路图、游戏地图、自动寻踪 图的存储1. 邻接矩阵 采用数据结构：二维数组">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阳江漫漫&#39;BLOG">
+<meta property="og:title" content="图论基础">
 <meta property="og:url" content="http://yjmanman.github.io/2025/02/06/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="阳江漫漫&#39;BLOG">
-<meta property="og:description" content="title: 图论基础author: YuJiacategories: 算法comment: ‘valine’tags: [algorithm]date: 2025-2-6 图论基础定义由顶点v和边e构成的集合，记G&#x3D;(v,e) 其他重要概念 路径：一个顶点到达另一个顶点途径的点构成的序列  边权：边的权重（在不同场景下意义不同） 在求最短路问题中，权重可以代表距离；在网络流问题中，权重">
+<meta property="og:description" content="图论基础定义由顶点v和边e构成的集合，记G&#x3D;(v,e) 其他重要概念 路径：一个顶点到达另一个顶点途径的点构成的序列  边权：边的权重（在不同场景下意义不同） 在求最短路问题中，权重可以代表距离；在网络流问题中，权重可以代表流量…   分类有向图、无向图、有权图、无权图、连通图······ 应用导航、网络拓扑图、电路图、游戏地图、自动寻踪 图的存储1. 邻接矩阵 采用数据结构：二维数组">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="d:/%E7%AC%94%E8%AE%B0%E5%90%88%E9%9B%86/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/6mwh.png">
 <meta property="og:image" content="d:/%E7%AC%94%E8%AE%B0%E5%90%88%E9%9B%86/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/pEegLqA.png">
-<meta property="article:published_time" content="2025-02-06T07:33:30.068Z">
-<meta property="article:modified_time" content="2025-02-06T07:43:53.288Z">
+<meta property="article:published_time" content="2025-02-05T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-02-06T08:03:58.721Z">
 <meta property="article:author" content="玉佳 秦">
-<meta property="article:tag" content="blog">
+<meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="d:/%E7%AC%94%E8%AE%B0%E5%90%88%E9%9B%86/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/6mwh.png">
   
   
   
-  <title>阳江漫漫&#39;BLOG</title>
+  <title>图论基础 - 阳江漫漫&#39;BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="图论基础"></span>
           
         </div>
 
@@ -211,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-06 15:33" pubdate>
-          2025年2月6日 下午
+        <time datetime="2025-02-06 00:00" pubdate>
+          2025年2月6日 凌晨
         </time>
       </span>
     
@@ -271,13 +271,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header"></h1>
+            <h1 id="seo-header">图论基础</h1>
             
             
               <div class="markdown-body">
                 
-                <p>title: 图论基础<br>author: YuJia<br>categories: 算法<br>comment: ‘valine’<br>tags: [algorithm]<br>date: 2025-2-6</p>
-<h1 id="图论基础"><a href="#图论基础" class="headerlink" title="图论基础"></a>图论基础</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>由<strong>顶点v</strong>和<strong>边e</strong>构成的集合，记G&#x3D;(v,e)</p>
+                <h1 id="图论基础"><a href="#图论基础" class="headerlink" title="图论基础"></a>图论基础</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>由<strong>顶点v</strong>和<strong>边e</strong>构成的集合，记G&#x3D;(v,e)</p>
 <h2 id="其他重要概念"><a href="#其他重要概念" class="headerlink" title="其他重要概念"></a>其他重要概念</h2><ul>
 <li><p>路径：一个顶点到达另一个顶点途径的点构成的序列</p>
 </li>
@@ -349,6 +348,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/algorithm/" class="print-no-link">#algorithm</a>
+      
+    </div>
   
 </div>
 
@@ -358,14 +385,14 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
+      <div>图论基础</div>
       <div>http://yjmanman.github.io/2025/02/06/图论基础/</div>
     </div>
     <div class="license-meta">
       
         <div class="license-meta-item">
           <div>作者</div>
-          <div>玉佳 秦</div>
+          <div>YuJia</div>
         </div>
       
       
@@ -403,9 +430,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/06/%E5%9B%BE%E8%AE%BA%E4%B9%8Bdfs%E6%B5%85%E8%B0%88/" title="">
+                      <a href="/2025/02/06/%E4%B8%B4%E6%97%B6%E5%8F%98%E9%87%8F%E4%B8%8Econst/" title="临时变量与const">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
+                        <span class="hidden-mobile">临时变量与const</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -413,8 +440,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/06/%E4%B8%B4%E6%97%B6%E5%8F%98%E9%87%8F%E4%B8%8Econst/" title="临时变量与const">
-                        <span class="hidden-mobile">临时变量与const</span>
+                      <a href="/2024/09/25/07/" title="编程基础07">
+                        <span class="hidden-mobile">编程基础07</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
