@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>临时变量与const</title>
+    <link href="/2025/02/06/%E4%B8%B4%E6%97%B6%E5%8F%98%E9%87%8F%E4%B8%8Econst/"/>
+    <url>/2025/02/06/%E4%B8%B4%E6%97%B6%E5%8F%98%E9%87%8F%E4%B8%8Econst/</url>
+    
+    <content type="html"><![CDATA[<h1 id="临时对象（临时变量）"><a href="#临时对象（临时变量）" class="headerlink" title="临时对象（临时变量）"></a>临时对象（临时变量）</h1><p>临时变量在代码中不体现，并且也没有名字的变量</p><p>临时对象的产生条件（2）：</p><p> 函数调用时所发生的隐式类型转换<br> 调用函数产生的返回值</p><p>核心：临时对象天生规定是<code>const</code>类型，因此在进行对临时变量进行传参或者修改值是会发生一些错误，比如：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">string <span class="hljs-title">foo</span><span class="hljs-params">()</span></span>;<br><span class="hljs-built_in">bar</span>(string &amp;a);<br><span class="hljs-built_in">bar</span>(<span class="hljs-built_in">foo</span>());非法操作，像这种就是明显的不熟悉临时对象的特点<br></code></pre></td></tr></table></figure><p>让我们来详细理解一下上述代码</p><ol><li>函数返回临时对象：</li></ol><p>foo() 是一个返回 string 对象的函数。当调用 foo() 时，它会返回一个临时的 <code>string</code> 对象。在C++中，临时对象是 <code>const</code> 类型的，这意味着它们不能被修改。</p><ol start="2"><li>函数参数类型：</li></ol><p>bar(string&amp; s) 这个函数的参数是一个非 <code>const</code> 的 <code>string</code>引用。这意味着 bar 函数期望接收一个可以修改的 string 对象的引用。</p><ol start="3"><li>问题所在：</li></ol><p>当你调用 bar(foo()) 时，foo() 返回的是一个临时的 string 对象。由于&#x3D;&#x3D;临时对象是 const 的&#x3D;&#x3D;，你&#x3D;&#x3D;不能将一个 <code>const</code> 临时对象传递给一个期望 <code>非const</code> 引用&#x3D;&#x3D;的函数参数。</p><p>换句话说，bar 函数期望接收一个可以修改的 string 引用，但你传递给它的是一个不可修改的临时对象，这会导致编译错误。</p><ol start="4"><li>解决方法：</li></ol><p>如果想要 bar 函数能够接受临时对象，可以将参数改为 const 引用，即 <code>void bar(const string&amp; s)</code>。这样，bar 函数就可以接受临时对象，因为它承诺不会修改传入的 string 对象。但与此同时参数不可更改</p><p>上述解释的核心点在于把一个 <code>const</code> 的引用绑定到给一个 <code>非const</code> 引用类型是不允许的</p><h1 id="搞清const变量拷贝和const引用绑定"><a href="#搞清const变量拷贝和const引用绑定" class="headerlink" title="搞清const变量拷贝和const引用绑定"></a>搞清const变量拷贝和const引用绑定</h1><p>！但请千万注意，以上内容都是基于 const引用 来说明的，并不说明 const 类型的变量不可以赋值给 非const 类型<br> const 类型赋值给非 const 类型<br>直接赋值（值拷贝）是允许的：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> x = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> y = x;   正确：<span class="hljs-type">const</span> 的值可以拷贝给非 <span class="hljs-type">const</span> 变量<br></code></pre></td></tr></table></figure><p> 这里，x 是一个 const 变量，它的值被拷贝到非 const 变量 y。这是允许的，因为拷贝操作不会影响原始的 const 变量。</p><p> 绑定引用是不允许的：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> x = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span>&amp; y = x;   错误：不能将 <span class="hljs-type">const</span> 绑定到非 <span class="hljs-type">const</span> 引用<br></code></pre></td></tr></table></figure><p> 这里，x 是一个 const 变量，尝试将其绑定到非 const 引用 y 会导致编译错误。这是因为如果允许这样做，就可以通过 y 修改 x，从而破坏 const 的承诺。</p><p> 为什么绑定引用不允许？<br><code>const</code> 是一种承诺，表示“我不会修改这个值”。</p><p>如果将 const 变量绑定到非 const 引用，就相当于允许通过该引用修改 const 变量，这违反了 const 的语义。</p><p>准确的表述<br>允许：将 const 类型的值拷贝给非 const 变量。<br>不允许：将 const 类型的变量绑定到非 const 引用。</p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>值拷贝：const 的值可以赋值给非 const 变量，因为这只是复制值，不会影响原始的 const 变量。</p><p>引用绑定：const 的变量不能绑定到非 const 引用，因为这会允许通过引用修改 const 变量，违反 const 的语义。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>零七八碎儿~</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>C++的边边角角</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>编程基础07</title>
     <link href="/2024/09/25/07/"/>
     <url>/2024/09/25/07/</url>
