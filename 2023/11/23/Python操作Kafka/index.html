@@ -16,23 +16,24 @@
   <meta name="author" content="YuJia">
   <meta name="keywords" content="blog">
   
-    <meta name="description" content="问题一：无法打开zookeeper 由于我kafka下载的版本是2.12-2.4.0,所以内置了zookeeper，不用单独下载   错误一：这个问题其实是由于我太久没有操作cmd导致的，我忘记了同盘下，切目录需要使用cd，导致系统找不到该路径  错误二：但仅仅这样还是会错误，仍然是系统找不到该路径   所以我们还需要做以下操作：   在你所对应的kafka目录下要自己手动创建两个名为”data”">
+    <meta name="description" content="问题一：无法打开zookeeper 由于我kafka下载的版本是2.12-2.4.0,所以内置了zookeeper，不用单独下载   &#x3D;&#x3D;错误一&#x3D;&#x3D;：这个问题其实是由于我太久没有操作cmd导致的，我忘记了同盘下，切目录需要使用cd，导致系统找不到该路径  &#x3D;&#x3D;错误二&#x3D;&#x3D;：但仅仅这样还是会错误，仍然是系统找不到该路径">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python操作Kafka错误日志">
 <meta property="og:url" content="http://yjmanman.github.io/2023/11/23/Python%E6%93%8D%E4%BD%9CKafka/index.html">
 <meta property="og:site_name" content="阳江漫漫&#39;BLOG">
-<meta property="og:description" content="问题一：无法打开zookeeper 由于我kafka下载的版本是2.12-2.4.0,所以内置了zookeeper，不用单独下载   错误一：这个问题其实是由于我太久没有操作cmd导致的，我忘记了同盘下，切目录需要使用cd，导致系统找不到该路径  错误二：但仅仅这样还是会错误，仍然是系统找不到该路径   所以我们还需要做以下操作：   在你所对应的kafka目录下要自己手动创建两个名为”data”">
+<meta property="og:description" content="问题一：无法打开zookeeper 由于我kafka下载的版本是2.12-2.4.0,所以内置了zookeeper，不用单独下载   &#x3D;&#x3D;错误一&#x3D;&#x3D;：这个问题其实是由于我太久没有操作cmd导致的，我忘记了同盘下，切目录需要使用cd，导致系统找不到该路径  &#x3D;&#x3D;错误二&#x3D;&#x3D;：但仅仅这样还是会错误，仍然是系统找不到该路径">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.imgs.ovh/2023/11/26/Mq6h2.md.png">
-<meta property="og:image" content="https://i.imgs.ovh/2023/11/26/MqWzj.png">
-<meta property="og:image" content="https://i.imgs.ovh/2023/11/26/MqB6V.png">
-<meta property="og:image" content="https://i.imgs.ovh/2023/11/26/Mq0CI.png">
+<meta property="og:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130445054.png">
+<meta property="og:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130500376.png">
+<meta property="og:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130509611.png">
+<meta property="og:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130513931.png">
+<meta property="og:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130641569.png">
 <meta property="article:published_time" content="2023-11-23T15:14:18.927Z">
-<meta property="article:modified_time" content="2024-04-20T11:09:05.823Z">
+<meta property="article:modified_time" content="2025-05-28T05:07:02.922Z">
 <meta property="article:author" content="玉佳 秦">
 <meta property="article:tag" content="error">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://i.imgs.ovh/2023/11/26/Mq6h2.md.png">
+<meta name="twitter:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130445054.png">
   
   
   
@@ -225,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          1.8k 字
         
       </span>
     
@@ -282,36 +283,34 @@
 <p>由于我kafka下载的版本是2.12-2.4.0,所以内置了zookeeper，不用单独下载</p>
 </blockquote>
 <ul>
-<li><p>错误一：这个问题其实是由于我太久没有操作cmd导致的，我忘记了同盘下，切目录需要使用cd，导致系统找不到该路径</p>
+<li><p>&#x3D;&#x3D;错误一&#x3D;&#x3D;：这个问题其实是由于我太久没有操作cmd导致的，我忘记了同盘下，切目录需要使用cd，导致系统找不到该路径</p>
 </li>
-<li><p>错误二：但仅仅这样还是会错误，仍然是系统找不到该路径</p>
+<li><p>&#x3D;&#x3D;错误二&#x3D;&#x3D;：但仅仅这样还是会错误，仍然是系统找不到该路径</p>
 <p>  所以我们还需要做以下操作：</p>
 <p>  在你所对应的kafka目录下要自己手动创建两个名为”data”和”logs”的文件夹，方便后续安排路径</p>
-<p>  <a target="_blank" rel="noopener" href="https://imgloc.com/image/Mq6h2"><img src="https://i.imgs.ovh/2023/11/26/Mq6h2.md.png" srcset="/img/loading.gif" lazyload alt="Mq6h2.md.png"></a></p>
+<p>  <img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130445054.png" srcset="/img/loading.gif" lazyload alt="image-20250528130445054"></p>
 <p>  接着，打开config&#x2F;zookeeper.properties(使用vscode或者记事本打开都可以)，我们来改一下配置，红框中是你所需要改的，默认是tmp什么的，改成刚刚手动创建的data文件位置即可；同时注意观察下面的客户端口号是否为2181(zookeeper默认就是这个，有些博主说只要改成对应的端口号就都可以使用，我没改)</p>
-<p>  <img src="https://i.imgs.ovh/2023/11/26/MqWzj.png" srcset="/img/loading.gif" lazyload alt="MqWzj.png"></p>
+<p>  <img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130500376.png" srcset="/img/loading.gif" lazyload alt="image-20250528130500376"></p>
 <p>  下一步，打开config&#x2F;server.properties，同样也是更改配置，同理，也要检查好你的地址和端口号</p>
-<p>  <img src="https://i.imgs.ovh/2023/11/26/MqB6V.png" srcset="/img/loading.gif" lazyload alt="MqB6V.png"></p>
-<p>  <img src="https://i.imgs.ovh/2023/11/26/Mq0CI.png" srcset="/img/loading.gif" lazyload alt="Mq0CI.png"></p>
+<p>  <img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130509611.png" srcset="/img/loading.gif" lazyload alt="image-20250528130509611"></p>
+<p>  <img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130513931.png" srcset="/img/loading.gif" lazyload alt="image-20250528130513931"></p>
 </li>
-<li><p>错误三：然后我们再来尝试打开，结果是kafka正常打开，zookeeper仍然找不到路径，这是为什么呢？于是我通过搜索找到了问题的原因：由于kafka是使用Java进行编写的，所以，应该是Java环境存在问题 <strong>↓</strong></p>
+<li><p>&#x3D;&#x3D;错误三&#x3D;&#x3D;：然后我们再来尝试打开，结果是kafka正常打开，zookeeper仍然找不到路径，这是为什么呢？于是我通过搜索找到了问题的原因：由于kafka是使用Java进行编写的，所以，应该是Java环境存在问题 <strong>↓</strong></p>
 <p>  参考文章<a target="_blank" rel="noopener" href="https://blog.csdn.net/GoodburghCottage/article/details/125896525">Windows10下安装Kafka超级详细的教程（包含安装过程中遇到的问题和解决办法）</a></p>
-<p>  解决方法：打开 kafka\bin\windows\kafka-run-class.bat ⽂件。</p>
+<p>  解决方法：打开 kafka\bin\windows\kafka-run-class.bat ⽂件。<br>  进⼊kafka⽬录 ，打开上⾯说到的这个⽂件，查找后的内容如下所示。</p>
+<p>  <img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130641569.png" srcset="/img/loading.gif" lazyload alt="image-20250528130641569"></p>
 </li>
 </ul>
-<p>进⼊kafka⽬录 ，打开上⾯说到的这个⽂件，查找后的内容如下所⽰。</p>
-<pre><code class="hljs">&lt;img src=&quot;https://i.imgs.ovh/2023/11/26/MqIcJ.png&quot; alt=&quot;MqIcJ.png&quot; border=&quot;0&quot;&gt;
-</code></pre>
 <p>具体原因请看这个博主的说法<a target="_blank" rel="noopener" href="https://blog.csdn.net/VinceZxy/article/details/100153085">.\bin\windows\kafka-server-start.bat .\config\server.properties 系统找不到指定路径，启动zookeeper时候闪退</a></p>
 <p>雀食，我的原因也是这个，由于已经在Java环境中写了&#x2F;bin，查找路径的时候仍然写上了&#x2F;bin，结果路径就变成了&#x2F;bin&#x2F;bin，自然就找不到路径了</p>
 <h2 id="问题二：操作Kafka写代码报错"><a href="#问题二：操作Kafka写代码报错" class="headerlink" title="问题二：操作Kafka写代码报错"></a>问题二：操作Kafka写代码报错</h2><p>zookeeper和kafka都已经启动就绪</p>
-<p>错误一：一定要注意是否打开了MySQL服务，数据库是否连接好，参数配置是否设置正确</p>
+<p>&#x3D;&#x3D;错误一&#x3D;&#x3D;：一定要注意是否打开了MySQL服务，数据库是否连接好，参数配置是否设置正确</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Python">conn = pymysql.connect(host=<span class="hljs-string">&#x27;localhost&#x27;</span>, user=<span class="hljs-string">&#x27;root&#x27;</span>, password=<span class="hljs-string">&#x27;your_password&#x27;</span>, database=<span class="hljs-string">&#x27;数据采集与处理&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
-<p>错误二：字段类型为data无法被自动处理成json格式，需要函数strftime()转换成字符串格式</p>
+<p>&#x3D;&#x3D;错误二&#x3D;&#x3D;：字段类型为data无法被自动处理成json格式，需要函数strftime()转换成字符串格式</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-string">&#x27;birthday&#x27;</span>: row[<span class="hljs-number">3</span>].strftime(<span class="hljs-string">&#x27;%Y-%m-%d&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
-<p>错误三：如果像以下这么写会报错</p>
+<p>&#x3D;&#x3D;错误三&#x3D;&#x3D;：如果像以下这么写会报错</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Python">producer = KafkaProducer(bootstrap_servers=<span class="hljs-string">&#x27;localhost:9092&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
 <p>可以多加一个api(api版本就是你的kafka对应版本)  <strong>↓</strong></p>
