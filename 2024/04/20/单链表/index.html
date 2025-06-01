@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130129221.png">
 <meta property="og:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130136850.png">
 <meta property="article:published_time" content="2024-04-20T11:10:00.855Z">
-<meta property="article:modified_time" content="2025-05-28T05:24:55.355Z">
+<meta property="article:modified_time" content="2025-06-01T07:30:36.343Z">
 <meta property="article:author" content="玉佳 秦">
 <meta property="article:tag" content="DataStructure">
 <meta name="twitter:card" content="summary_large_image">
@@ -279,26 +279,26 @@
             
               <div class="markdown-body">
                 
-                <h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><blockquote>
+                <h1 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h1><blockquote>
 <p>每个节点 &#x3D; 存储值 + 链接下一结点的引用字段</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs Java"> <br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SinglyListNode</span> &#123;<br>    <span class="hljs-type">int</span> val;<br>    SinglyListNode next;<br>    SinglyListNode(<span class="hljs-type">int</span> x) &#123; <br>      val = x; <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><blockquote>
+<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><blockquote>
 <p>若从链表头一直到尾都进行一次遍历，则需要O(N)时间，效率太低，那么该如何提升速度呢？多加一个变量－－头结点是一个很好的办法(头结点一般不设置值)。</p>
 </blockquote>
-<h3 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h3><p>时间复杂度O(1)</p>
+<h1 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h1><p>时间复杂度O(1)</p>
 <p><img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130047383.png" srcset="/img/loading.gif" lazyload></p>
 <p>要想插入一个新结点，我们只需要让新结点(cur)的指针先指向想插入地方的后者(next)，再让前者(prev)的指针指向新的结点(cur)，这样一个新的链接就形成了，是不是非常简单！</p>
 <p>注意：一定要让新结点先与后方的结点连接上，试想看，如果先让prev直接指向cur会发生什么事情呢？直接进行连接的时候我们会发现，next直接会断掉，如果我们再想让cur连接上next是不是就于事无补了，这下好啦，根本就找不到next在哪里了(扶额苦笑)，如图</p>
 <p><img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130107633.png" srcset="/img/loading.gif" lazyload></p>
 <p>那假如我们有的时候就会忘记先连接后边怎么办呢，没关系！！！这有什么难的</p>
 <p>我们直接先对这串链表进行一个存储的大动作，用另一个变量存起来，这样我想用就可以用咯，相当于拿了一个备份（虽然说浪费了一定的空间，但是不会再弄丢啦）</p>
-<h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h3><p>时间复杂度O(N)</p>
+<h1 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h1><p>时间复杂度O(N)</p>
 <p>懂了插入操作之后，删除操作就更好理解了，操作链表的本质就是改变指针(引用)</p>
 <p>我们假设想删除某一结点x，意思就是想要在链表中将x刨除，那么我们直接让指针越过该结点不就好了，让x的前指针(a)直接指向他的下一个结点(b)即可，删除操作就是这么简单！</p>
 <p><img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130122175.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="特殊位置的增删改查"><a href="#特殊位置的增删改查" class="headerlink" title="特殊位置的增删改查"></a>特殊位置的增删改查</h2><h3 id="在开头增加结点"><a href="#在开头增加结点" class="headerlink" title="在开头增加结点"></a>在开头增加结点</h3><p>我们知道，头结点是链表在增删改查提高效率的一大关键，那么如果我们想要在某个链表的开头更新节点，应该怎么办呢</p>
+<h1 id="特殊位置的增删改查"><a href="#特殊位置的增删改查" class="headerlink" title="特殊位置的增删改查"></a>特殊位置的增删改查</h1><h2 id="在开头增加结点"><a href="#在开头增加结点" class="headerlink" title="在开头增加结点"></a>在开头增加结点</h2><p>我们知道，头结点是链表在增删改查提高效率的一大关键，那么如果我们想要在某个链表的开头更新节点，应该怎么办呢</p>
 <p>直接三步走</p>
 <ol>
 <li><p>初始化一个新结点 cur ；</p>
@@ -311,15 +311,15 @@
 <p><img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130129221.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">headInsert</span><span class="hljs-params">(<span class="hljs-type">int</span> data)</span>&#123;<br>  <span class="hljs-type">Node</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>(data);<br>  n.next = head.next;<br>  head.next = n;<br>  <span class="hljs-comment">//head.next = new Node(data,head.next);</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="删除第一个结点"><a href="#删除第一个结点" class="headerlink" title="删除第一个结点"></a>删除第一个结点</h3><p>在已有链表上删除第一个结点</p>
+<h2 id="删除第一个结点"><a href="#删除第一个结点" class="headerlink" title="删除第一个结点"></a>删除第一个结点</h2><p>在已有链表上删除第一个结点</p>
 <p>这还不简单，直接让头结点指向第二个节点即可</p>
 <p><img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationimage-20250528130136850.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">removeFirst</span><span class="hljs-params">()</span>&#123;<br>  <span class="hljs-type">Node</span> <span class="hljs-variable">first</span> <span class="hljs-operator">=</span> head.next;<br>  head.next = first.next;<br>  <span class="hljs-comment">//head.next = head.next.next;</span><br> &#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="在末尾插入结点"><a href="#在末尾插入结点" class="headerlink" title="在末尾插入结点"></a>在末尾插入结点</h3><p>这似乎比在开始的操作要复杂一些，但如果我们定义一个临时指针，让他做一个索引标记，指向实时位置，我们就知道现在遍历到何处了，这样就方便在尾巴进行插入操作啦</p>
+<h2 id="在末尾插入结点"><a href="#在末尾插入结点" class="headerlink" title="在末尾插入结点"></a>在末尾插入结点</h2><p>这似乎比在开始的操作要复杂一些，但如果我们定义一个临时指针，让他做一个索引标记，指向实时位置，我们就知道现在遍历到何处了，这样就方便在尾巴进行插入操作啦</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">tailInsert</span><span class="hljs-params">(<span class="hljs-type">int</span> data)</span>&#123;<br>  <span class="hljs-type">Node</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> head;<br>  <span class="hljs-comment">//遍历到结尾处</span><br>  <span class="hljs-keyword">while</span>(temp.next!=<span class="hljs-literal">null</span>)&#123;<br>    temp = temp.next;<br>    &#125;<br>  <span class="hljs-type">Node</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>(data);<br>  cur = temp.next;<br>  <span class="hljs-comment">//temp.next = new Node(data,null)</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="删除末尾结点"><a href="#删除末尾结点" class="headerlink" title="删除末尾结点"></a>删除末尾结点</h3><p>同理基础操作是遍历,但遍历只能让temp定位到最后一个结点，如果需要删除最后一个节点只能找到倒数第二个节点，让他的后继为空才行，于是需要多加一个变量找到temp的前一个结点（链表长度为空直接返回）</p>
+<h2 id="删除末尾结点"><a href="#删除末尾结点" class="headerlink" title="删除末尾结点"></a>删除末尾结点</h2><p>同理基础操作是遍历,但遍历只能让temp定位到最后一个结点，如果需要删除最后一个节点只能找到倒数第二个节点，让他的后继为空才行，于是需要多加一个变量找到temp的前一个结点（链表长度为空直接返回）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">removeLast</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-keyword">if</span>(head.next==<span class="hljs-literal">null</span>)&#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-type">Node</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> head.next;<br>    <span class="hljs-type">Node</span> <span class="hljs-variable">prev</span> <span class="hljs-operator">=</span> head;<br>    <span class="hljs-keyword">while</span>(temp.next!=<span class="hljs-literal">null</span>)&#123;<br>        prev = temp;<br>        temp = temp.next;<br>    &#125;<br>    prev.next = <span class="hljs-literal">null</span>; <br>&#125;<br></code></pre></td></tr></table></figure>
 
 <blockquote>

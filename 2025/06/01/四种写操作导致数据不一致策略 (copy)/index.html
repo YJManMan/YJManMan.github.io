@@ -16,22 +16,22 @@
   <meta name="author" content="YuJia">
   <meta name="keywords" content="blog">
   
-    <meta name="description" content="临时对象（临时变量）临时变量在代码中不体现，并且也没有名字的变量 临时对象的产生条件（2）：  函数调用时所发生的隐式类型转换 调用函数产生的返回值 核心：临时对象天生规定是const类型，因此在进行对临时变量进行传参或者修改值是会发生一些错误，比如： 123string foo();bar(string &amp;a);bar(foo());非法操作，像这种就是明显的不熟悉临时对象的特点 让我们">
+    <meta name="description" content="先更新数据库再更新缓存优点简单，代码逻辑直观 缺点 线程安全问题：多个线程同时更新数据&gt;时，可能会导致缓存与数据库不一致   线程A更新了数据库   线程B也更新了数据库，并且先于线程A更新了缓存 线程A随后更新缓存，此时缓存中的数据会变成线程A的旧数据，而数据库中是线程B的新数据，导致数据不一致   并发读写问题：缓存失效，A读取缓存，此时缓存失效，进而读取数据库的值，在A更新缓存之前，就">
 <meta property="og:type" content="article">
-<meta property="og:title" content="临时变量与const">
-<meta property="og:url" content="http://yjmanman.github.io/2025/02/06/%E4%B8%B4%E6%97%B6%E5%8F%98%E9%87%8F%E4%B8%8Econst/index.html">
+<meta property="og:title" content="MySQL四种写操作导致数据不一致策略(未完结)">
+<meta property="og:url" content="http://yjmanman.github.io/2025/06/01/%E5%9B%9B%E7%A7%8D%E5%86%99%E6%93%8D%E4%BD%9C%E5%AF%BC%E8%87%B4%E6%95%B0%E6%8D%AE%E4%B8%8D%E4%B8%80%E8%87%B4%E7%AD%96%E7%95%A5%20(copy)/index.html">
 <meta property="og:site_name" content="阳江漫漫&#39;BLOG">
-<meta property="og:description" content="临时对象（临时变量）临时变量在代码中不体现，并且也没有名字的变量 临时对象的产生条件（2）：  函数调用时所发生的隐式类型转换 调用函数产生的返回值 核心：临时对象天生规定是const类型，因此在进行对临时变量进行传参或者修改值是会发生一些错误，比如： 123string foo();bar(string &amp;a);bar(foo());非法操作，像这种就是明显的不熟悉临时对象的特点 让我们">
+<meta property="og:description" content="先更新数据库再更新缓存优点简单，代码逻辑直观 缺点 线程安全问题：多个线程同时更新数据&gt;时，可能会导致缓存与数据库不一致   线程A更新了数据库   线程B也更新了数据库，并且先于线程A更新了缓存 线程A随后更新缓存，此时缓存中的数据会变成线程A的旧数据，而数据库中是线程B的新数据，导致数据不一致   并发读写问题：缓存失效，A读取缓存，此时缓存失效，进而读取数据库的值，在A更新缓存之前，就">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-28T05:38:22.149Z">
+<meta property="article:published_time" content="2025-06-01T07:42:25.842Z">
+<meta property="article:modified_time" content="2025-06-01T08:32:25.567Z">
 <meta property="article:author" content="玉佳 秦">
-<meta property="article:tag" content="C++的边边角角">
+<meta property="article:tag" content="MySQL-Redis">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>临时变量与const - 阳江漫漫&#39;BLOG</title>
+  <title>MySQL四种写操作导致数据不一致策略(未完结) - 阳江漫漫&#39;BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="临时变量与const"></span>
+            <span id="subtitle" data-typed-text="MySQL四种写操作导致数据不一致策略(未完结)"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-06 00:00" pubdate>
-          2025年2月6日 凌晨
+        <time datetime="2025-06-01 15:42" pubdate>
+          2025年6月1日 下午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          1.5k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          11 分钟
+          13 分钟
         
       </span>
     
@@ -268,47 +268,98 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">临时变量与const</h1>
+            <h1 id="seo-header">MySQL四种写操作导致数据不一致策略(未完结)</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="临时对象（临时变量）"><a href="#临时对象（临时变量）" class="headerlink" title="临时对象（临时变量）"></a>临时对象（临时变量）</h1><p>临时变量在代码中不体现，并且也没有名字的变量</p>
-<p>临时对象的产生条件（2）：</p>
-<p> 函数调用时所发生的隐式类型转换<br> 调用函数产生的返回值</p>
-<p>核心：临时对象天生规定是<code>const</code>类型，因此在进行对临时变量进行传参或者修改值是会发生一些错误，比如：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">string <span class="hljs-title">foo</span><span class="hljs-params">()</span></span>;<br><span class="hljs-built_in">bar</span>(string &amp;a);<br><span class="hljs-built_in">bar</span>(<span class="hljs-built_in">foo</span>());非法操作，像这种就是明显的不熟悉临时对象的特点<br></code></pre></td></tr></table></figure>
-<p>让我们来详细理解一下上述代码</p>
-<ol>
-<li>函数返回临时对象：</li>
+                <h1 id="先更新数据库再更新缓存"><a href="#先更新数据库再更新缓存" class="headerlink" title="先更新数据库再更新缓存"></a>先更新数据库再更新缓存</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>简单，代码逻辑直观</p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ol>
+<li>线程安全问题：多个线程<mark>同时更新数据</mark>&gt;时，可能会导致缓存与数据库不一致</li>
 </ol>
-<p>foo() 是一个返回 string 对象的函数。当调用 foo() 时，它会返回一个临时的 <code>string</code> 对象。在C++中，临时对象是 <code>const</code> 类型的，这意味着它们不能被修改。</p>
+<ul>
+<li>线程A更新了数据库</li>
+</ul>
+<ul>
+<li>线程B也更新了数据库，并且先于线程A更新了缓存</li>
+<li>线程A随后更新缓存，此时缓存中的数据会变成线程A的旧数据，而数据库中是线程B的新数据，导致数据不一致</li>
+</ul>
 <ol start="2">
-<li>函数参数类型：</li>
+<li>并发读写问题：<mark>缓存失效</mark>，A读取缓存，此时缓存失效，进而读取数据库的值，在A更新缓存之前，就在此时线程B更新了数据库的值，并且将缓存的值进行了更新，随后A又进行了缓存的更新，那么线程A写入的旧值会覆盖线程B的新值。所以此时数据库是更新好的值，而缓存是旧值，就会出现数据不一致的情况</li>
 </ol>
-<p>bar(string&amp; s) 这个函数的参数是一个非 <code>const</code> 的 <code>string</code>引用。这意味着 bar 函数期望接收一个可以修改的 string 对象的引用。</p>
+<p>（1. 2. 说的差不多：A.mysql —&gt; B.mysql —&gt; B.redis —&gt; A.redis）</p>
 <ol start="3">
-<li>问题所在：</li>
+<li>性能浪费：</li>
 </ol>
-<p>当你调用 bar(foo()) 时，foo() 返回的是一个临时的 string 对象。由于<mark>临时对象是 const</mark> 的，你<mark>不能将一个 <code>const</code> 临时对象传递给一个期望 <code>非const</code> 引用</mark>的函数参数。</p>
-<p>换句话说，bar 函数期望接收一个可以修改的 string 引用，但你传递给它的是一个不可修改的临时对象，这会导致编译错误。</p>
-<ol start="4">
-<li>解决方法：</li>
+<ul>
+<li>写多读少，缓存被频繁更新但很少被读取</li>
+<li>缓存数据需要通过复杂计算生成，写入缓存会增加不必要的开销</li>
+</ul>
+<h2 id="改进策略"><a href="#改进策略" class="headerlink" title="改进策略"></a>改进策略</h2><h1 id="先更新缓存再更新数据库"><a href="#先更新缓存再更新数据库" class="headerlink" title="先更新缓存再更新数据库"></a>先更新缓存再更新数据库</h1><h2 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h2><p>缓存更新快，能够更快速的响应服务器的请求，更新速度快</p>
+<h2 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h2><ol>
+<li>有数据库更新失败风险：导致数据不一致</li>
+<li>线程安全问题：（A.redis —&gt; B.redis —&gt; B.mysql —&gt; A.mysql ））</li>
+<li>写入性能瓶颈：每次写操作都需要同步更新缓存和数据库，可能导致写入性能下降，尤其是当数据库操作较慢时</li>
 </ol>
-<p>如果想要 bar 函数能够接受临时对象，可以将参数改为 const 引用，即 <code>void bar(const string&amp; s)</code>。这样，bar 函数就可以接受临时对象，因为它承诺不会修改传入的 string 对象。但与此同时参数不可更改</p>
-<p>上述解释的核心点在于把一个 <code>const</code> 的引用绑定到给一个 <code>非const</code> 引用类型是不允许的</p>
-<h1 id="搞清const变量拷贝和const引用绑定"><a href="#搞清const变量拷贝和const引用绑定" class="headerlink" title="搞清const变量拷贝和const引用绑定"></a>搞清const变量拷贝和const引用绑定</h1><p>！但请千万注意，以上内容都是基于 const引用 来说明的，并不说明 const 类型的变量不可以赋值给 非const 类型<br> const 类型赋值给非 const 类型<br>直接赋值（值拷贝）是允许的：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> x = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> y = x;   正确：<span class="hljs-type">const</span> 的值可以拷贝给非 <span class="hljs-type">const</span> 变量<br></code></pre></td></tr></table></figure>
-<p> 这里，x 是一个 const 变量，它的值被拷贝到非 const 变量 y。这是允许的，因为拷贝操作不会影响原始的 const 变量。</p>
-<p> 绑定引用是不允许的：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> x = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span>&amp; y = x;   错误：不能将 <span class="hljs-type">const</span> 绑定到非 <span class="hljs-type">const</span> 引用<br></code></pre></td></tr></table></figure>
-<p> 这里，x 是一个 const 变量，尝试将其绑定到非 const 引用 y 会导致编译错误。这是因为如果允许这样做，就可以通过 y 修改 x，从而破坏 const 的承诺。</p>
-<p> 为什么绑定引用不允许？<br><code>const</code> 是一种承诺，表示“我不会修改这个值”。</p>
-<p>如果将 const 变量绑定到非 const 引用，就相当于允许通过该引用修改 const 变量，这违反了 const 的语义。</p>
-<p>准确的表述<br>允许：将 const 类型的值拷贝给非 const 变量。<br>不允许：将 const 类型的变量绑定到非 const 引用。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>值拷贝：const 的值可以赋值给非 const 变量，因为这只是复制值，不会影响原始的 const 变量。</p>
-<p>引用绑定：const 的变量不能绑定到非 const 引用，因为这会允许通过引用修改 const 变量，违反 const 的语义。</p>
-
+<h1 id="先删除缓存再更新数据库"><a href="#先删除缓存再更新数据库" class="headerlink" title="先删除缓存再更新数据库"></a>先删除缓存再更新数据库</h1><h2 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h2><ul>
+<li><p>能够有效避免缓存当中的旧数据被读取</p>
+</li>
+<li><p>实现简单（删除缓存是一个简单操作）</p>
+</li>
+</ul>
+<h2 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h2><ol>
+<li>有可能缓存删除失败导致数据不一致</li>
+<li>存在长期的脏数据：</li>
+</ol>
+<p>​	假设线程A执行“先删除缓存再更新数据库”的操作，同时线程B执行读操作，可能的执行顺序如下：</p>
+<ul>
+<li>线程A删除缓存。</li>
+<li>线程B查询缓存，发现缓存已删除。</li>
+<li>线程B查询数据库，获取旧数据。</li>
+<li>线程B将旧数据写入缓存。</li>
+<li>线程A更新数据库。</li>
+</ul>
+<p>​	此时，数据库中存储的是新数据，而缓存中存储的是旧数据，导致数据不一致。这种情况下，缓存中的旧数据被称为“脏数据”。</p>
+<h2 id="改进策略-1"><a href="#改进策略-1" class="headerlink" title="改进策略"></a>改进策略</h2><h3 id="延时双删：解决脏数据"><a href="#延时双删：解决脏数据" class="headerlink" title="延时双删：解决脏数据"></a>延时双删：解决脏数据</h3><p>先删除缓存 —&gt; 更新数据库（设置延时） —&gt; 删除缓存</p>
+<h3 id="示例场景"><a href="#示例场景" class="headerlink" title="示例场景"></a>示例场景</h3><p>假设线程A和线程B同时执行以下操作：</p>
+<ol>
+<li><strong>线程A</strong>：<ul>
+<li>删除缓存。</li>
+<li>更新数据库。</li>
+<li>延时1秒后再次删除缓存。</li>
+</ul>
+</li>
+<li><strong>线程B</strong>：<ul>
+<li>在线程A删除缓存后，线程B查询缓存发现数据不存在。</li>
+<li>线程B查询数据库，获取旧数据并写入缓存。</li>
+</ul>
+</li>
+</ol>
+<p><strong>分析</strong>：</p>
+<ul>
+<li>在线程A更新数据库之前，线程B可能已经将旧数据写入缓存。</li>
+<li>线程A更新数据库后，旧数据仍然存在于缓存中。</li>
+<li>线程A延时1秒后再次删除缓存，清理了线程B回填的旧数据。</li>
+<li>此时，缓存中没有数据，后续的读操作将直接从数据库获取最新数据。</li>
+</ul>
+<h3 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h3><p>在删除缓存之后 更新数据库之前这段时间内过来的读请求 也会把旧数据写回缓存中。此时数据就会不一致，不一致的时间取决于<strong>数据库的更新时间</strong>。</p>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><p>延时时间需要根据业务的请求时间（读请求）来定，否则也会存在在第二次删除之后读请求还未结束，又把旧数据写回缓存，导致依然存在脏数据的问题。</p>
+<h1 id="先更新数据库再删除缓存"><a href="#先更新数据库再删除缓存" class="headerlink" title="先更新数据库再删除缓存"></a>先更新数据库再删除缓存</h1><h2 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h2><ul>
+<li><p>数据不一致的时间窗口短</p>
+</li>
+<li><p>有效避免了缓存击穿</p>
+<p>由于删除操作是在数据库更新后执行的，因此再有大量请求时，在第一个读请求后就会写回缓存，后续读取缓存即可，就不会有大量的请求打到数据库上</p>
+</li>
+</ul>
+<h2 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h2><ul>
+<li>也会产生一部分的数据不一致的时间，但是会大大缩短</li>
+</ul>
+<p>数据不一致的时机：更新完数据库后，删除缓存前。这一段时间是数据不一致的，但是由于缓存删除的时间要比数据更新的时间快多了，因此数据不一致的时间窗口非常短暂。</p>
+<ul>
+<li>也会存在缓存删除失败</li>
+</ul>
+<p><mark>一定要考虑业务场景和成本再进行选择这四种策略，一般朴素的就够用， 因为本身数据库的更新就比写入缓存时间长</mark></p>
+<h1 id="如何解决缓存删除失败？"><a href="#如何解决缓存删除失败？" class="headerlink" title="如何解决缓存删除失败？"></a>如何解决缓存删除失败？</h1>
                 
               </div>
             
@@ -326,7 +377,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E9%9B%B6%E4%B8%83%E5%85%AB%E7%A2%8E%E5%84%BF/" class="category-chain-item">零七八碎儿~</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
   
   
 
@@ -341,7 +392,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/C-%E7%9A%84%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92/" class="print-no-link">#C++的边边角角</a>
+        <a href="/tags/MySQL-Redis/" class="print-no-link">#MySQL-Redis</a>
       
     </div>
   
@@ -353,8 +404,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>临时变量与const</div>
-      <div>http://yjmanman.github.io/2025/02/06/临时变量与const/</div>
+      <div>MySQL四种写操作导致数据不一致策略(未完结)</div>
+      <div>http://yjmanman.github.io/2025/06/01/四种写操作导致数据不一致策略 (copy)/</div>
     </div>
     <div class="license-meta">
       
@@ -366,7 +417,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月6日</div>
+          <div>2025年6月1日</div>
         </div>
       
       
@@ -398,18 +449,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/06/01/Windows11%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2Hbase%E8%B6%85%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B%20(copy)/" title="Windows11使用Docker部署Hbase超详细过程">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Windows11使用Docker部署Hbase超详细过程</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/06/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" title="图论基础">
-                        <span class="hidden-mobile">图论基础</span>
+                      <a href="/2025/06/01/%E7%AB%9E%E8%B5%9B%E6%80%9D%E8%80%83%E6%96%B9%E5%BC%8F%20&amp;%20%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%20(copy)/" title="竞赛思考方式 &amp; 学习方法">
+                        <span class="hidden-mobile">竞赛思考方式 &amp; 学习方法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

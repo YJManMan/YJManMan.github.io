@@ -16,22 +16,22 @@
   <meta name="author" content="YuJia">
   <meta name="keywords" content="blog">
   
-    <meta name="description" content="临时对象（临时变量）临时变量在代码中不体现，并且也没有名字的变量 临时对象的产生条件（2）：  函数调用时所发生的隐式类型转换 调用函数产生的返回值 核心：临时对象天生规定是const类型，因此在进行对临时变量进行传参或者修改值是会发生一些错误，比如： 123string foo();bar(string &amp;a);bar(foo());非法操作，像这种就是明显的不熟悉临时对象的特点 让我们">
+    <meta name="description" content="xv6的基本使用xv6 是一个教学用的简化版 Unix 操作系统，常用于操作系统课程学习。它需要 QEMU 来模拟硬件环境，而 make qemu-nox 是一个自动化命令，用于编译并启动 xv6 系统。 基本流程：在xv6的目录下创建.c文件 —–&gt; vim&#x2F;Vscode编写代码 —–&gt; 打开Makefile将编写的文件名加入到UPROGS当中 —–&gt; 编译该文件 —">
 <meta property="og:type" content="article">
-<meta property="og:title" content="临时变量与const">
-<meta property="og:url" content="http://yjmanman.github.io/2025/02/06/%E4%B8%B4%E6%97%B6%E5%8F%98%E9%87%8F%E4%B8%8Econst/index.html">
+<meta property="og:title" content="xv6的基本使用">
+<meta property="og:url" content="http://yjmanman.github.io/2025/06/01/xv6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%20(copy)/index.html">
 <meta property="og:site_name" content="阳江漫漫&#39;BLOG">
-<meta property="og:description" content="临时对象（临时变量）临时变量在代码中不体现，并且也没有名字的变量 临时对象的产生条件（2）：  函数调用时所发生的隐式类型转换 调用函数产生的返回值 核心：临时对象天生规定是const类型，因此在进行对临时变量进行传参或者修改值是会发生一些错误，比如： 123string foo();bar(string &amp;a);bar(foo());非法操作，像这种就是明显的不熟悉临时对象的特点 让我们">
+<meta property="og:description" content="xv6的基本使用xv6 是一个教学用的简化版 Unix 操作系统，常用于操作系统课程学习。它需要 QEMU 来模拟硬件环境，而 make qemu-nox 是一个自动化命令，用于编译并启动 xv6 系统。 基本流程：在xv6的目录下创建.c文件 —–&gt; vim&#x2F;Vscode编写代码 —–&gt; 打开Makefile将编写的文件名加入到UPROGS当中 —–&gt; 编译该文件 —">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-05-28T05:38:22.149Z">
+<meta property="article:published_time" content="2025-06-01T07:33:30.008Z">
+<meta property="article:modified_time" content="2025-06-01T08:31:43.314Z">
 <meta property="article:author" content="玉佳 秦">
-<meta property="article:tag" content="C++的边边角角">
+<meta property="article:tag" content="随便玩点">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>临时变量与const - 阳江漫漫&#39;BLOG</title>
+  <title>xv6的基本使用 - 阳江漫漫&#39;BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="临时变量与const"></span>
+            <span id="subtitle" data-typed-text="xv6的基本使用"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-06 00:00" pubdate>
-          2025年2月6日 凌晨
+        <time datetime="2025-06-01 15:33" pubdate>
+          2025年6月1日 下午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          497 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          11 分钟
+          5 分钟
         
       </span>
     
@@ -268,46 +268,36 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">临时变量与const</h1>
+            <h1 id="seo-header">xv6的基本使用</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="临时对象（临时变量）"><a href="#临时对象（临时变量）" class="headerlink" title="临时对象（临时变量）"></a>临时对象（临时变量）</h1><p>临时变量在代码中不体现，并且也没有名字的变量</p>
-<p>临时对象的产生条件（2）：</p>
-<p> 函数调用时所发生的隐式类型转换<br> 调用函数产生的返回值</p>
-<p>核心：临时对象天生规定是<code>const</code>类型，因此在进行对临时变量进行传参或者修改值是会发生一些错误，比如：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">string <span class="hljs-title">foo</span><span class="hljs-params">()</span></span>;<br><span class="hljs-built_in">bar</span>(string &amp;a);<br><span class="hljs-built_in">bar</span>(<span class="hljs-built_in">foo</span>());非法操作，像这种就是明显的不熟悉临时对象的特点<br></code></pre></td></tr></table></figure>
-<p>让我们来详细理解一下上述代码</p>
-<ol>
-<li>函数返回临时对象：</li>
-</ol>
-<p>foo() 是一个返回 string 对象的函数。当调用 foo() 时，它会返回一个临时的 <code>string</code> 对象。在C++中，临时对象是 <code>const</code> 类型的，这意味着它们不能被修改。</p>
-<ol start="2">
-<li>函数参数类型：</li>
-</ol>
-<p>bar(string&amp; s) 这个函数的参数是一个非 <code>const</code> 的 <code>string</code>引用。这意味着 bar 函数期望接收一个可以修改的 string 对象的引用。</p>
-<ol start="3">
-<li>问题所在：</li>
-</ol>
-<p>当你调用 bar(foo()) 时，foo() 返回的是一个临时的 string 对象。由于<mark>临时对象是 const</mark> 的，你<mark>不能将一个 <code>const</code> 临时对象传递给一个期望 <code>非const</code> 引用</mark>的函数参数。</p>
-<p>换句话说，bar 函数期望接收一个可以修改的 string 引用，但你传递给它的是一个不可修改的临时对象，这会导致编译错误。</p>
-<ol start="4">
-<li>解决方法：</li>
-</ol>
-<p>如果想要 bar 函数能够接受临时对象，可以将参数改为 const 引用，即 <code>void bar(const string&amp; s)</code>。这样，bar 函数就可以接受临时对象，因为它承诺不会修改传入的 string 对象。但与此同时参数不可更改</p>
-<p>上述解释的核心点在于把一个 <code>const</code> 的引用绑定到给一个 <code>非const</code> 引用类型是不允许的</p>
-<h1 id="搞清const变量拷贝和const引用绑定"><a href="#搞清const变量拷贝和const引用绑定" class="headerlink" title="搞清const变量拷贝和const引用绑定"></a>搞清const变量拷贝和const引用绑定</h1><p>！但请千万注意，以上内容都是基于 const引用 来说明的，并不说明 const 类型的变量不可以赋值给 非const 类型<br> const 类型赋值给非 const 类型<br>直接赋值（值拷贝）是允许的：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> x = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> y = x;   正确：<span class="hljs-type">const</span> 的值可以拷贝给非 <span class="hljs-type">const</span> 变量<br></code></pre></td></tr></table></figure>
-<p> 这里，x 是一个 const 变量，它的值被拷贝到非 const 变量 y。这是允许的，因为拷贝操作不会影响原始的 const 变量。</p>
-<p> 绑定引用是不允许的：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> x = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span>&amp; y = x;   错误：不能将 <span class="hljs-type">const</span> 绑定到非 <span class="hljs-type">const</span> 引用<br></code></pre></td></tr></table></figure>
-<p> 这里，x 是一个 const 变量，尝试将其绑定到非 const 引用 y 会导致编译错误。这是因为如果允许这样做，就可以通过 y 修改 x，从而破坏 const 的承诺。</p>
-<p> 为什么绑定引用不允许？<br><code>const</code> 是一种承诺，表示“我不会修改这个值”。</p>
-<p>如果将 const 变量绑定到非 const 引用，就相当于允许通过该引用修改 const 变量，这违反了 const 的语义。</p>
-<p>准确的表述<br>允许：将 const 类型的值拷贝给非 const 变量。<br>不允许：将 const 类型的变量绑定到非 const 引用。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>值拷贝：const 的值可以赋值给非 const 变量，因为这只是复制值，不会影响原始的 const 变量。</p>
-<p>引用绑定：const 的变量不能绑定到非 const 引用，因为这会允许通过引用修改 const 变量，违反 const 的语义。</p>
+                <h1 id="xv6的基本使用"><a href="#xv6的基本使用" class="headerlink" title="xv6的基本使用"></a>xv6的基本使用</h1><p>xv6 是一个教学用的简化版 Unix 操作系统，常用于操作系统课程学习。它需要 <strong>QEMU</strong> 来模拟硬件环境，而 <code>make qemu-nox</code> 是一个自动化命令，用于<strong>编译并启动 xv6 系统</strong>。</p>
+<p>基本流程：在xv6的目录下创建.c文件 —–&gt; vim&#x2F;Vscode编写代码 —–&gt; 打开Makefile将编写的文件名加入到UPROGS当中 —–&gt; 编译该文件 —–&gt; 对该目录进行编译 —–&gt; 使用qemu命令启动xv6操作系统 —–&gt;执行文件</p>
+<ul>
+<li><p>更改Makefile文件</p>
+<p>例如你的文件名为<code>test</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">UPROGS=\<br>  _cat\<br>  _ls\<br>  _myprogram\<br>  ...<br>  _test\<br></code></pre></td></tr></table></figure>
+
+<p>这样就修改完成了</p>
+</li>
+<li><p>编译文件命令</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 使用32位模式编译（需安装gcc-multilib）</span><br>gcc -m32 -o <span class="hljs-built_in">test</span> test.c<br></code></pre></td></tr></table></figure></li>
+<li><p>编译xv6命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">make<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>运行xv6命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">make qemu-nox<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>当编译时出现问题，可以先将已编译部分清空，再重试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">make clean<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>第一次接触操作系统的朋友可以稍微了解一下常用指令</p>
+<p>vim的操作</p>
+<p>写入文件：i（可以看见左下角变成了插入）</p>
+<p>保存文件：退出插入模式按下<code>Esc</code>，输入<code>:wq</code></p>
+<p>……</p>
 
                 
               </div>
@@ -341,7 +331,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/C-%E7%9A%84%E8%BE%B9%E8%BE%B9%E8%A7%92%E8%A7%92/" class="print-no-link">#C++的边边角角</a>
+        <a href="/tags/%E9%9A%8F%E4%BE%BF%E7%8E%A9%E7%82%B9/" class="print-no-link">#随便玩点</a>
       
     </div>
   
@@ -353,8 +343,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>临时变量与const</div>
-      <div>http://yjmanman.github.io/2025/02/06/临时变量与const/</div>
+      <div>xv6的基本使用</div>
+      <div>http://yjmanman.github.io/2025/06/01/xv6的基本使用 (copy)/</div>
     </div>
     <div class="license-meta">
       
@@ -366,7 +356,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月6日</div>
+          <div>2025年6月1日</div>
         </div>
       
       
@@ -398,9 +388,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/06/01/Windows11%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2Hbase%E8%B6%85%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B%20(copy)/" title="Windows11使用Docker部署Hbase超详细过程">
+                      <a href="/2025/06/01/%E7%AB%9E%E8%B5%9B%E6%80%9D%E8%80%83%E6%96%B9%E5%BC%8F%20&amp;%20%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%20(copy)/" title="竞赛思考方式 &amp; 学习方法">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Windows11使用Docker部署Hbase超详细过程</span>
+                        <span class="hidden-mobile">竞赛思考方式 &amp; 学习方法</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -408,8 +398,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/06/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" title="图论基础">
-                        <span class="hidden-mobile">图论基础</span>
+                      <a href="/2025/06/01/Windows11%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2Hbase%E8%B6%85%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B%20(copy)/" title="Windows11使用Docker部署Hbase超详细过程">
+                        <span class="hidden-mobile">Windows11使用Docker部署Hbase超详细过程</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
