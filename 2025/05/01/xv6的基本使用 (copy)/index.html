@@ -16,30 +16,22 @@
   <meta name="author" content="YuJia">
   <meta name="keywords" content="blog">
   
-    <meta name="description" content="Windows11使用Docker部署Hbase超详细过程 导入：虽然有虚拟机，但是懒得再配啦，还没玩过Docker，这回玩一下 没有虚拟机还想在windows部署Hbase的有福啦 优势  无需手动安装 Java 或配置环境变量 一键启动 HBase + Thrift 服务   Docker安装安装很简单啊，一点不用怕的 下载网址： 下载产品是Docker Desktop  安装此处省略……(没">
+    <meta name="description" content="xv6的基本使用xv6 是一个教学用的简化版 Unix 操作系统，常用于操作系统课程学习。它需要 QEMU 来模拟硬件环境，而 make qemu-nox 是一个自动化命令，用于编译并启动 xv6 系统。 基本流程：在xv6的目录下创建.c文件 —–&gt; vim&#x2F;Vscode编写代码 —–&gt; 打开Makefile将编写的文件名加入到UPROGS当中 —–&gt; 编译该文件 —">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows11使用Docker部署Hbase超详细过程">
-<meta property="og:url" content="http://yjmanman.github.io/2025/06/01/Windows11%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2Hbase%E8%B6%85%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B%20(copy)/index.html">
+<meta property="og:title" content="xv6的基本使用">
+<meta property="og:url" content="http://yjmanman.github.io/2025/05/01/xv6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%20(copy)/index.html">
 <meta property="og:site_name" content="阳江漫漫&#39;BLOG">
-<meta property="og:description" content="Windows11使用Docker部署Hbase超详细过程 导入：虽然有虚拟机，但是懒得再配啦，还没玩过Docker，这回玩一下 没有虚拟机还想在windows部署Hbase的有福啦 优势  无需手动安装 Java 或配置环境变量 一键启动 HBase + Thrift 服务   Docker安装安装很简单啊，一点不用怕的 下载网址： 下载产品是Docker Desktop  安装此处省略……(没">
+<meta property="og:description" content="xv6的基本使用xv6 是一个教学用的简化版 Unix 操作系统，常用于操作系统课程学习。它需要 QEMU 来模拟硬件环境，而 make qemu-nox 是一个自动化命令，用于编译并启动 xv6 系统。 基本流程：在xv6的目录下创建.c文件 —–&gt; vim&#x2F;Vscode编写代码 —–&gt; 打开Makefile将编写的文件名加入到UPROGS当中 —–&gt; 编译该文件 —">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation20250421204302.png">
-<meta property="og:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation20250421204323.png">
-<meta property="og:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation20250421204330.png">
-<meta property="og:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation20250421204335.png">
-<meta property="og:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation20250421204340.png">
-<meta property="og:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation20250421204346.png">
-<meta property="og:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation20250421204352.png">
-<meta property="article:published_time" content="2025-06-01T07:31:20.756Z">
-<meta property="article:modified_time" content="2025-06-01T08:31:06.472Z">
+<meta property="article:published_time" content="2025-04-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-05T01:29:05.113Z">
 <meta property="article:author" content="玉佳 秦">
 <meta property="article:tag" content="随便玩点">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation20250421204302.png">
   
   
   
-  <title>Windows11使用Docker部署Hbase超详细过程 - 阳江漫漫&#39;BLOG</title>
+  <title>xv6的基本使用 - 阳江漫漫&#39;BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Windows11使用Docker部署Hbase超详细过程"></span>
+            <span id="subtitle" data-typed-text="xv6的基本使用"></span>
           
         </div>
 
@@ -216,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-06-01 15:31" pubdate>
-          2025年6月1日 下午
+        <time datetime="2025-05-01 00:00" pubdate>
+          2025年5月1日 凌晨
         </time>
       </span>
     
@@ -228,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          497 字
         
       </span>
     
@@ -239,7 +231,7 @@
         
         
         
-          20 分钟
+          5 分钟
         
       </span>
     
@@ -276,62 +268,36 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Windows11使用Docker部署Hbase超详细过程</h1>
+            <h1 id="seo-header">xv6的基本使用</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Windows11使用Docker部署Hbase超详细过程"><a href="#Windows11使用Docker部署Hbase超详细过程" class="headerlink" title="Windows11使用Docker部署Hbase超详细过程"></a>Windows11使用Docker部署Hbase超详细过程</h1><blockquote>
-<p>导入：虽然有虚拟机，但是懒得再配啦，还没玩过Docker，这回玩一下</p>
-<p>没有虚拟机还想在windows部署Hbase的有福啦</p>
-<p><strong>优势</strong></p>
+                <h1 id="xv6的基本使用"><a href="#xv6的基本使用" class="headerlink" title="xv6的基本使用"></a>xv6的基本使用</h1><p>xv6 是一个教学用的简化版 Unix 操作系统，常用于操作系统课程学习。它需要 <strong>QEMU</strong> 来模拟硬件环境，而 <code>make qemu-nox</code> 是一个自动化命令，用于<strong>编译并启动 xv6 系统</strong>。</p>
+<p>基本流程：在xv6的目录下创建.c文件 —–&gt; vim&#x2F;Vscode编写代码 —–&gt; 打开Makefile将编写的文件名加入到UPROGS当中 —–&gt; 编译该文件 —–&gt; 对该目录进行编译 —–&gt; 使用qemu命令启动xv6操作系统 —–&gt;执行文件</p>
 <ul>
-<li>无需手动安装 Java 或配置环境变量</li>
-<li>一键启动 HBase + Thrift 服务</li>
-</ul>
-</blockquote>
-<h2 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h2><p>安装很简单啊，一点不用怕的</p>
-<p>下载网址：<a target="_blank" rel="noopener" href="https://www.docker.com/"></a></p>
-<p>下载产品是Docker Desktop</p>
-<p><img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation20250421204302.png" srcset="/img/loading.gif" lazyload></p>
-<p>安装此处省略……(没有什么需要注意的，如果实在怕自己安装有问题可以搜以下如何安装Docker)</p>
-<p>安装好之后再注册一下或者直接使用github账号也没问题，之后就会出现以下页面</p>
-<p><img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation20250421204323.png" srcset="/img/loading.gif" lazyload></p>
-<p>记得把左下角这个小东西启动起来</p>
-<p>接下来就可以部署Hbase了👇</p>
-<h2 id="部署Hbase步骤"><a href="#部署Hbase步骤" class="headerlink" title="部署Hbase步骤"></a>部署Hbase步骤</h2><p>在命令行操作，以管理员身份运行</p>
-<ul>
-<li><p>拉取Hbase镜像</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker pull harisekhon/hbase<br></code></pre></td></tr></table></figure>
+<li><p>更改Makefile文件</p>
+<p>例如你的文件名为<code>test</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">UPROGS=\<br>  _cat\<br>  _ls\<br>  _myprogram\<br>  ...<br>  _test\<br></code></pre></td></tr></table></figure>
 
-<p>  <img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation20250421204330.png" srcset="/img/loading.gif" lazyload></p>
-<blockquote>
-<p>首次拉取不是这样的，但是差不多
-  </p>
-</blockquote>
+<p>这样就修改完成了</p>
 </li>
-<li><p><strong>启动容器（包含 HBase + Thrift 服务）</strong></p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d -p 9090:9090 -p 8080:8080 --name hbase harisekhon/hbase<br></code></pre></td></tr></table></figure></li>
+<li><p>编译文件命令</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 使用32位模式编译（需安装gcc-multilib）</span><br>gcc -m32 -o <span class="hljs-built_in">test</span> test.c<br></code></pre></td></tr></table></figure></li>
+<li><p>编译xv6命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">make<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>运行xv6命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">make qemu-nox<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>当编译时出现问题，可以先将已编译部分清空，再重试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">make clean<br></code></pre></td></tr></table></figure></li>
 </ul>
-<p>​	<code>-p 9090:9090</code>: 映射 Thrift 端口（Python 通过此端口连接）</p>
-<p>​	<code>-p 8080:8080</code>: HBase Web UI 端口</p>
-<p>​	注意这里是你一会要用到的端口</p>
-<p>​	<img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation20250421204335.png" srcset="/img/loading.gif" lazyload></p>
-<p>此时再去查看你的Docker界面就会发现多出来点东西，这就是你刚刚启动成功的效果</p>
-<p><img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation20250421204340.png" srcset="/img/loading.gif" lazyload></p>
-<ul>
-<li><p><strong>验证容器状态</strong></p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker ps -a<br></code></pre></td></tr></table></figure></li>
-</ul>
-<p>​	确认容器状态为 Up</p>
-<p>​	<img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation20250421204346.png" srcset="/img/loading.gif" lazyload></p>
-<p>通过以上步骤你的Docker就成功部署好Hbase啦（为了完成NoSQL偷点懒没关系吧QAQ）</p>
-<h2 id="简单测试"><a href="#简单测试" class="headerlink" title="简单测试"></a>简单测试</h2><p>我写个作业简单测试一下：</p>
-<p>简单</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> happybase<br><br>TABLE_NAME = <span class="hljs-string">&#x27;mytable&#x27;</span><br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">connect</span>():<br>    <span class="hljs-keyword">return</span> happybase.Connection(host=<span class="hljs-string">&#x27;localhost&#x27;</span>, port=<span class="hljs-number">9090</span>)<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">create_table</span>():<br>    conn = connect()<br>    <span class="hljs-keyword">if</span> TABLE_NAME.encode() <span class="hljs-keyword">in</span> conn.tables():<br>        conn.delete_table(TABLE_NAME, disable=<span class="hljs-literal">True</span>)<br>    conn.create_table(TABLE_NAME, &#123;<br>        <span class="hljs-string">&#x27;mycf&#x27;</span>: <span class="hljs-built_in">dict</span>()<br>    &#125;)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;表 <span class="hljs-subst">&#123;TABLE_NAME&#125;</span> 创建成功，初始列族为 mycf&quot;</span>)<br>    conn.close()<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">modify_table</span>():<br>    conn = connect()<br>    <span class="hljs-keyword">if</span> TABLE_NAME.encode() <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> conn.tables():<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;表 <span class="hljs-subst">&#123;TABLE_NAME&#125;</span> 不存在，无法修改列族&quot;</span>)<br>        <span class="hljs-keyword">return</span><br><br>    families = conn.table(TABLE_NAME).families()<br><br>    new_families = &#123;&#125;<br>    <span class="hljs-keyword">for</span> cf <span class="hljs-keyword">in</span> families:<br>        <span class="hljs-keyword">if</span> cf == <span class="hljs-string">b&#x27;mycf&#x27;</span>:<br>            new_families[<span class="hljs-string">&#x27;mycf&#x27;</span>] = &#123;<span class="hljs-string">&#x27;max_versions&#x27;</span>: <span class="hljs-number">5</span>&#125;<br>        <span class="hljs-keyword">else</span>:<br>            new_families[cf.decode()] = &#123;&#125;<br><br>    new_families[<span class="hljs-string">&#x27;newcf&#x27;</span>] = &#123;&#125;<br>    conn.delete_table(TABLE_NAME, disable=<span class="hljs-literal">True</span>)<br>    conn.create_table(TABLE_NAME, new_families)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;成功添加列族 newcf，并修改 mycf 的 max_versions 为 5&quot;</span>)<br>    conn.close()<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">insert_data</span>():<br>    conn = connect()<br>    table = conn.table(TABLE_NAME)<br>    table.put(<span class="hljs-string">b&#x27;row1&#x27;</span>, &#123;<span class="hljs-string">b&#x27;mycf:col1&#x27;</span>: <span class="hljs-string">b&#x27;value1&#x27;</span>&#125;)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;数据插入成功（如果取消注释 insert_data()）&quot;</span>)<br>    conn.close()<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">delete_table</span>():<br>    conn = connect()<br>    <span class="hljs-keyword">if</span> TABLE_NAME.encode() <span class="hljs-keyword">in</span> conn.tables():<br>        conn.delete_table(TABLE_NAME, disable=<span class="hljs-literal">True</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;列族 mycf 已删除&quot;</span>)  <span class="hljs-comment"># 只能通过删表实现删除列族</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;表 <span class="hljs-subst">&#123;TABLE_NAME&#125;</span> 已删除&quot;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;表 <span class="hljs-subst">&#123;TABLE_NAME&#125;</span> 不存在&quot;</span>)<br>    conn.close()<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():<br>    create_table()<br>    modify_table()<br>    <span class="hljs-comment"># insert_data()  # ← 你可以取消这行注释来测试插入数据</span><br>    delete_table()<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    main()<br><br></code></pre></td></tr></table></figure>
-
-<p><img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation20250421204352.png" srcset="/img/loading.gif" lazyload></p>
-<p>得到了正确的输出！</p>
+<p>第一次接触操作系统的朋友可以稍微了解一下常用指令</p>
+<p>vim的操作</p>
+<p>写入文件：i（可以看见左下角变成了插入）</p>
+<p>保存文件：退出插入模式按下<code>Esc</code>，输入<code>:wq</code></p>
+<p>……</p>
 
                 
               </div>
@@ -377,8 +343,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Windows11使用Docker部署Hbase超详细过程</div>
-      <div>http://yjmanman.github.io/2025/06/01/Windows11使用Docker部署Hbase超详细过程 (copy)/</div>
+      <div>xv6的基本使用</div>
+      <div>http://yjmanman.github.io/2025/05/01/xv6的基本使用 (copy)/</div>
     </div>
     <div class="license-meta">
       
@@ -390,7 +356,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年6月1日</div>
+          <div>2025年5月1日</div>
         </div>
       
       
@@ -422,9 +388,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/06/01/xv6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%20(copy)/" title="xv6的基本使用">
+                      <a href="/2025/05/20/Windows11%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2Hbase%E8%B6%85%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B%20(copy)/" title="Windows11使用Docker部署Hbase超详细过程">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">xv6的基本使用</span>
+                        <span class="hidden-mobile">Windows11使用Docker部署Hbase超详细过程</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
