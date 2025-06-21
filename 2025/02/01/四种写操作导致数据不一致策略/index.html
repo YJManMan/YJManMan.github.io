@@ -19,7 +19,7 @@
     <meta name="description" content="先更新数据库再更新缓存优点简单，代码逻辑直观 缺点 线程安全问题：多个线程同时更新数据&gt;时，可能会导致缓存与数据库不一致   线程A更新了数据库   线程B也更新了数据库，并且先于线程A更新了缓存 线程A随后更新缓存，此时缓存中的数据会变成线程A的旧数据，而数据库中是线程B的新数据，导致数据不一致   并发读写问题：缓存失效，A读取缓存，此时缓存失效，进而读取数据库的值，在A更新缓存之前，就">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL四种写操作导致数据不一致策略(未完结)">
-<meta property="og:url" content="http://yjmanman.github.io/2025/02/01/%E5%9B%9B%E7%A7%8D%E5%86%99%E6%93%8D%E4%BD%9C%E5%AF%BC%E8%87%B4%E6%95%B0%E6%8D%AE%E4%B8%8D%E4%B8%80%E8%87%B4%E7%AD%96%E7%95%A5%20(copy)/index.html">
+<meta property="og:url" content="http://yjmanman.github.io/2025/02/01/%E5%9B%9B%E7%A7%8D%E5%86%99%E6%93%8D%E4%BD%9C%E5%AF%BC%E8%87%B4%E6%95%B0%E6%8D%AE%E4%B8%8D%E4%B8%80%E8%87%B4%E7%AD%96%E7%95%A5/index.html">
 <meta property="og:site_name" content="阳江漫漫&#39;BLOG">
 <meta property="og:description" content="先更新数据库再更新缓存优点简单，代码逻辑直观 缺点 线程安全问题：多个线程同时更新数据&gt;时，可能会导致缓存与数据库不一致   线程A更新了数据库   线程B也更新了数据库，并且先于线程A更新了缓存 线程A随后更新缓存，此时缓存中的数据会变成线程A的旧数据，而数据库中是线程B的新数据，导致数据不一致   并发读写问题：缓存失效，A读取缓存，此时缓存失效，进而读取数据库的值，在A更新缓存之前，就">
 <meta property="og:locale" content="zh_CN">
@@ -405,7 +405,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>MySQL四种写操作导致数据不一致策略(未完结)</div>
-      <div>http://yjmanman.github.io/2025/02/01/四种写操作导致数据不一致策略 (copy)/</div>
+      <div>http://yjmanman.github.io/2025/02/01/四种写操作导致数据不一致策略/</div>
     </div>
     <div class="license-meta">
       

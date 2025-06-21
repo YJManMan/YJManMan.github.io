@@ -16,22 +16,22 @@
   <meta name="author" content="YuJia">
   <meta name="keywords" content="blog">
   
-    <meta name="description" content="xv6的基本使用xv6 是一个教学用的简化版 Unix 操作系统，常用于操作系统课程学习。它需要 QEMU 来模拟硬件环境，而 make qemu-nox 是一个自动化命令，用于编译并启动 xv6 系统。 基本流程：在xv6的目录下创建.c文件 —–&gt; vim&#x2F;Vscode编写代码 —–&gt; 打开Makefile将编写的文件名加入到UPROGS当中 —–&gt; 编译该文件 —">
+    <meta name="description" content="单例模式确保一个类只有一个实例，而且自行实例化，并向整个系统提供这个实例 因此单例模式的构造函数是私有的，并且实例是static静态的，还需要提供一个静态方法getInstance()获取实例 单例模式分饿汉式和懒汉式 饿汉式程序启动时就创建实例，一开始就创建实例并始终需要使用该实例 优点：线程安全，实现简单 缺点：无法延迟加载，会浪费资源 123456789101112131415161718c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="xv6的基本使用">
-<meta property="og:url" content="http://yjmanman.github.io/2025/05/01/xv6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%20(copy)/index.html">
+<meta property="og:title" content="单例模式">
+<meta property="og:url" content="http://yjmanman.github.io/2025/06/21/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="阳江漫漫&#39;BLOG">
-<meta property="og:description" content="xv6的基本使用xv6 是一个教学用的简化版 Unix 操作系统，常用于操作系统课程学习。它需要 QEMU 来模拟硬件环境，而 make qemu-nox 是一个自动化命令，用于编译并启动 xv6 系统。 基本流程：在xv6的目录下创建.c文件 —–&gt; vim&#x2F;Vscode编写代码 —–&gt; 打开Makefile将编写的文件名加入到UPROGS当中 —–&gt; 编译该文件 —">
+<meta property="og:description" content="单例模式确保一个类只有一个实例，而且自行实例化，并向整个系统提供这个实例 因此单例模式的构造函数是私有的，并且实例是static静态的，还需要提供一个静态方法getInstance()获取实例 单例模式分饿汉式和懒汉式 饿汉式程序启动时就创建实例，一开始就创建实例并始终需要使用该实例 优点：线程安全，实现简单 缺点：无法延迟加载，会浪费资源 123456789101112131415161718c">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-04-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-05T01:29:05.113Z">
+<meta property="article:published_time" content="2025-06-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-21T06:32:28.323Z">
 <meta property="article:author" content="玉佳 秦">
-<meta property="article:tag" content="随便玩点">
+<meta property="article:tag" content="base">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>xv6的基本使用 - 阳江漫漫&#39;BLOG</title>
+  <title>单例模式 - 阳江漫漫&#39;BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="xv6的基本使用"></span>
+            <span id="subtitle" data-typed-text="单例模式"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-05-01 00:00" pubdate>
-          2025年5月1日 凌晨
+        <time datetime="2025-06-21 00:00" pubdate>
+          2025年6月21日 凌晨
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          497 字
+          1.9k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          5 分钟
+          16 分钟
         
       </span>
     
@@ -268,36 +268,29 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">xv6的基本使用</h1>
+            <h1 id="seo-header">单例模式</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="xv6的基本使用"><a href="#xv6的基本使用" class="headerlink" title="xv6的基本使用"></a>xv6的基本使用</h1><p>xv6 是一个教学用的简化版 Unix 操作系统，常用于操作系统课程学习。它需要 <strong>QEMU</strong> 来模拟硬件环境，而 <code>make qemu-nox</code> 是一个自动化命令，用于<strong>编译并启动 xv6 系统</strong>。</p>
-<p>基本流程：在xv6的目录下创建.c文件 —–&gt; vim&#x2F;Vscode编写代码 —–&gt; 打开Makefile将编写的文件名加入到UPROGS当中 —–&gt; 编译该文件 —–&gt; 对该目录进行编译 —–&gt; 使用qemu命令启动xv6操作系统 —–&gt;执行文件</p>
-<ul>
-<li><p>更改Makefile文件</p>
-<p>例如你的文件名为<code>test</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">UPROGS=\<br>  _cat\<br>  _ls\<br>  _myprogram\<br>  ...<br>  _test\<br></code></pre></td></tr></table></figure>
+                <h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><p>确保一个类只有一个实例，而且自行实例化，并向整个系统提供这个实例</p>
+<p>因此单例模式的构造函数是私有的，并且实例是static静态的，还需要提供一个静态方法getInstance()获取实例</p>
+<p>单例模式分饿汉式和懒汉式</p>
+<h2 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h2><p>程序启动时就创建实例，一开始就创建实例并始终需要使用该实例</p>
+<p>优点：线程安全，实现简单</p>
+<p>缺点：无法延迟加载，会浪费资源</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Singleton</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-type">static</span> Singleton instance;  <span class="hljs-comment">// 静态实例对象</span><br>    <br>    <span class="hljs-comment">// 私有构造函数和拷贝控制</span><br>    <span class="hljs-built_in">Singleton</span>() = <span class="hljs-keyword">default</span>;<br>    ~<span class="hljs-built_in">Singleton</span>() = <span class="hljs-keyword">default</span>;<br>    <span class="hljs-built_in">Singleton</span>(<span class="hljs-type">const</span> Singleton&amp;) = <span class="hljs-keyword">delete</span>;<br>    Singleton&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-type">const</span> Singleton&amp;) = <span class="hljs-keyword">delete</span>;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">static</span> Singleton&amp; <span class="hljs-title">getInstance</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> instance;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">// 静态成员变量必须在类外初始化</span><br>Singleton Singleton::instance;<br></code></pre></td></tr></table></figure>
 
-<p>这样就修改完成了</p>
-</li>
-<li><p>编译文件命令</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 使用32位模式编译（需安装gcc-multilib）</span><br>gcc -m32 -o <span class="hljs-built_in">test</span> test.c<br></code></pre></td></tr></table></figure></li>
-<li><p>编译xv6命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">make<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>运行xv6命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">make qemu-nox<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>当编译时出现问题，可以先将已编译部分清空，再重试</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">make clean<br></code></pre></td></tr></table></figure></li>
-</ul>
-<p>第一次接触操作系统的朋友可以稍微了解一下常用指令</p>
-<p>vim的操作</p>
-<p>写入文件：i（可以看见左下角变成了插入）</p>
-<p>保存文件：退出插入模式按下<code>Esc</code>，输入<code>:wq</code></p>
-<p>……</p>
+<h2 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h2><p>首次调用静态方法获取实例时才创建实例</p>
+<p>普通写法会出现线程不安全的情况，如果只加一种锁那么创建好实例之后仍然会每次加上锁再去判断，每次都会加锁影响性能</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;mutex&gt;</span></span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Singleton</span> &#123;<br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-type">static</span> Singleton* instance;<br>    <span class="hljs-type">static</span> std::mutex mutex_;<br>    <br>    <span class="hljs-comment">// 私有构造函数和拷贝控制</span><br>    <span class="hljs-built_in">Singleton</span>() = <span class="hljs-keyword">default</span>;<br>    ~<span class="hljs-built_in">Singleton</span>() = <span class="hljs-keyword">default</span>;<br>    <span class="hljs-built_in">Singleton</span>(<span class="hljs-type">const</span> Singleton&amp;) = <span class="hljs-keyword">delete</span>;<br>    Singleton&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-type">const</span> Singleton&amp;) = <span class="hljs-keyword">delete</span>;<br><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">static</span> Singleton* <span class="hljs-title">getInstance</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-function">std::lock_guard&lt;std::mutex&gt; <span class="hljs-title">lock</span><span class="hljs-params">(mutex_)</span></span>;  <span class="hljs-comment">// 全局加锁</span><br>        <span class="hljs-keyword">if</span> (instance == <span class="hljs-literal">nullptr</span>) &#123;<br>            instance = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Singleton</span>();<br>        &#125;<br>        <span class="hljs-keyword">return</span> instance;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">// 静态成员变量初始化</span><br>Singleton* Singleton::instance = <span class="hljs-literal">nullptr</span>;<br>std::mutex Singleton::mutex_;<br></code></pre></td></tr></table></figure>
+
+<p>判空 锁 判空 锁 这样的形式就会防止锁消耗性能</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;mutex&gt;</span></span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Singleton</span> &#123;<br><span class="hljs-keyword">private</span>:<br><span class="hljs-type">static</span> Singleton* instance;<br><span class="hljs-type">static</span> std::mutex mutex_;<br><span class="hljs-built_in">Singleton</span>() = <span class="hljs-keyword">default</span>;<br>~<span class="hljs-built_in">Singleton</span>() = <span class="hljs-keyword">default</span>;<br><span class="hljs-built_in">Singleton</span>(<span class="hljs-type">const</span> Singleton&amp;) = <span class="hljs-keyword">delete</span>;<br>Singleton&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-type">const</span> Singleton&amp;) = <span class="hljs-keyword">delete</span>;<br><br><span class="hljs-keyword">public</span>:<br><span class="hljs-function"><span class="hljs-type">static</span> Singleton* <span class="hljs-title">getInstance</span><span class="hljs-params">()</span> </span>&#123;<br>    Singleton* tmp = instance;<br>    <span class="hljs-keyword">if</span> (tmp == <span class="hljs-literal">nullptr</span>) &#123;<br>        <span class="hljs-function">std::lock_guard&lt;std::mutex&gt; <span class="hljs-title">lock</span><span class="hljs-params">(mutex_)</span></span>;<br>        tmp = instance;<br>        <span class="hljs-keyword">if</span> (tmp == <span class="hljs-literal">nullptr</span>) &#123;<br>            tmp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Singleton</span>();<br>            instance = tmp;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> tmp;<br>&#125;<br>&#125;;<br><br>Singleton* Singleton::instance = <span class="hljs-literal">nullptr</span>;<br>std::mutex Singleton::mutex_;<br></code></pre></td></tr></table></figure>
+
+<h2 id="C-实现单例模式的一些问题"><a href="#C-实现单例模式的一些问题" class="headerlink" title="C++实现单例模式的一些问题"></a>C++实现单例模式的一些问题</h2><p>C++的类内除了默认的构造函数，还有默认的拷贝构造和默认赋值运算符</p>
+<p>所以我们需要将其禁用，使用&#x3D;delete，防止出现外部的拷贝构造和赋值操作</p>
+<p>另外懒汉式要想保证线程安全就必须使用指针去实现或C++11Meyers</p>
 
                 
               </div>
@@ -316,7 +309,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E9%9B%B6%E4%B8%83%E5%85%AB%E7%A2%8E%E5%84%BF/" class="category-chain-item">零七八碎儿~</a>
+  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="category-chain-item">设计模式</a>
   
   
 
@@ -331,7 +324,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E9%9A%8F%E4%BE%BF%E7%8E%A9%E7%82%B9/" class="print-no-link">#随便玩点</a>
+        <a href="/tags/base/" class="print-no-link">#base</a>
       
     </div>
   
@@ -343,8 +336,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>xv6的基本使用</div>
-      <div>http://yjmanman.github.io/2025/05/01/xv6的基本使用 (copy)/</div>
+      <div>单例模式</div>
+      <div>http://yjmanman.github.io/2025/06/21/单例模式/</div>
     </div>
     <div class="license-meta">
       
@@ -356,7 +349,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年5月1日</div>
+          <div>2025年6月21日</div>
         </div>
       
       
@@ -388,9 +381,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/05/20/Windows11%E4%BD%BF%E7%94%A8Docker%E9%83%A8%E7%BD%B2Hbase%E8%B6%85%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B%20(copy)/" title="Windows11使用Docker部署Hbase超详细过程">
+                      <a href="/2025/06/21/%E4%BB%8E%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%A7%92%E5%BA%A6%E8%AE%B2%EF%BC%8C%E6%95%B0%E6%8D%AE%E6%98%AF%E6%80%8E%E4%B9%88%E8%A2%AB%E4%BC%A0%E8%BE%93%E7%9A%84%EF%BC%9F/" title="从系统的角度讲，数据是怎么被传输的？">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Windows11使用Docker部署Hbase超详细过程</span>
+                        <span class="hidden-mobile">从系统的角度讲，数据是怎么被传输的？</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -398,8 +391,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/06/%E4%B8%B4%E6%97%B6%E5%8F%98%E9%87%8F%E4%B8%8Econst/" title="临时变量与const">
-                        <span class="hidden-mobile">临时变量与const</span>
+                      <a href="/2025/06/04/%E8%AE%A1%E7%BD%91%E6%96%B0%E8%AF%86/" title="计网新识">
+                        <span class="hidden-mobile">计网新识</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
