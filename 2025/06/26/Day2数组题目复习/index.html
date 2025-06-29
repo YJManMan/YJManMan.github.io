@@ -16,24 +16,24 @@
   <meta name="author" content="YuJia">
   <meta name="keywords" content="blog">
   
-    <meta name="description" content="从系统的角度讲，数据是怎么被传输的？每一次创建进程就创建进程控制块PCB，进程控制块的核心实现就是task_struct，task_struct是一个结构体； 在task_srtruct中有一个files指针，用于指向文件的结构体，文件结构体当中就有一个文件描述符数组，数组的索引号就是文件描述符，用于打开文件； 每个文件都有一个inode，socket文件里的inode就指向内核当中socket结">
+    <meta name="description" content="209长度最小的子数组暴力首先想到的肯定是双层for循环，一次把所有的子集合全部看一遍，但是一看数据量绝对超时，于是按照昨天刷题的思想，利用双指针是否能够代替？但是应该是使用不当，无法通过所有的用例，而且里面我写了一个if…else…应该是逻辑出现了问题 滑动窗口双指针思想1234567891011121314151617181920class Solution &amp;#123;public:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从系统的角度讲，数据是怎么被传输的？">
-<meta property="og:url" content="http://yjmanman.github.io/2025/06/21/%E4%BB%8E%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%A7%92%E5%BA%A6%E8%AE%B2%EF%BC%8C%E6%95%B0%E6%8D%AE%E6%98%AF%E6%80%8E%E4%B9%88%E8%A2%AB%E4%BC%A0%E8%BE%93%E7%9A%84%EF%BC%9F/index.html">
+<meta property="og:title" content="数组题目复习Day2">
+<meta property="og:url" content="http://yjmanman.github.io/2025/06/26/Day2%E6%95%B0%E7%BB%84%E9%A2%98%E7%9B%AE%E5%A4%8D%E4%B9%A0/index.html">
 <meta property="og:site_name" content="阳江漫漫&#39;BLOG">
-<meta property="og:description" content="从系统的角度讲，数据是怎么被传输的？每一次创建进程就创建进程控制块PCB，进程控制块的核心实现就是task_struct，task_struct是一个结构体； 在task_srtruct中有一个files指针，用于指向文件的结构体，文件结构体当中就有一个文件描述符数组，数组的索引号就是文件描述符，用于打开文件； 每个文件都有一个inode，socket文件里的inode就指向内核当中socket结">
+<meta property="og:description" content="209长度最小的子数组暴力首先想到的肯定是双层for循环，一次把所有的子集合全部看一遍，但是一看数据量绝对超时，于是按照昨天刷题的思想，利用双指针是否能够代替？但是应该是使用不当，无法通过所有的用例，而且里面我写了一个if…else…应该是逻辑出现了问题 滑动窗口双指针思想1234567891011121314151617181920class Solution &amp;#123;public:">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationHexoStationHexoStationimage-20250622130850183.png">
-<meta property="article:published_time" content="2025-06-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-22T05:27:47.470Z">
+<meta property="og:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation%E4%B8%80%E4%BA%8C%E5%B8%83%E5%B8%83gif%E8%A1%A8%E6%83%85%E5%8C%85%E5%8A%A8%E5%9B%BE%20(255)_%E7%88%B1%E7%BB%99%E7%BD%91_aigei_com.gif">
+<meta property="article:published_time" content="2025-06-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-27T07:02:27.987Z">
 <meta property="article:author" content="玉佳 秦">
-<meta property="article:tag" content="base">
+<meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationHexoStationHexoStationimage-20250622130850183.png">
+<meta name="twitter:image" content="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation%E4%B8%80%E4%BA%8C%E5%B8%83%E5%B8%83gif%E8%A1%A8%E6%83%85%E5%8C%85%E5%8A%A8%E5%9B%BE%20(255)_%E7%88%B1%E7%BB%99%E7%BD%91_aigei_com.gif">
   
   
   
-  <title>从系统的角度讲，数据是怎么被传输的？ - 阳江漫漫&#39;BLOG</title>
+  <title>数组题目复习Day2 - 阳江漫漫&#39;BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="从系统的角度讲，数据是怎么被传输的？"></span>
+            <span id="subtitle" data-typed-text="数组题目复习Day2"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-06-21 00:00" pubdate>
-          2025年6月21日 凌晨
+        <time datetime="2025-06-26 00:00" pubdate>
+          2025年6月26日 凌晨
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          519 字
+          2.1k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          5 分钟
+          18 分钟
         
       </span>
     
@@ -270,27 +270,26 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">从系统的角度讲，数据是怎么被传输的？</h1>
+            <h1 id="seo-header">数组题目复习Day2</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="从系统的角度讲，数据是怎么被传输的？"><a href="#从系统的角度讲，数据是怎么被传输的？" class="headerlink" title="从系统的角度讲，数据是怎么被传输的？"></a>从系统的角度讲，数据是怎么被传输的？</h1><p>每一次创建进程就创建进程控制块PCB，进程控制块的核心实现就是task_struct，task_struct是一个结构体；</p>
-<p>在task_srtruct中有一个files指针，用于指向文件的结构体，文件结构体当中就有一个文件描述符数组，数组的索引号就是文件描述符，用于打开文件；</p>
-<p>每个文件都有一个inode，socket文件里的inode就指向内核当中socket结构体，在这个结构体当中会有一个发送队列和接收队列。发送队列&#x2F;接收队列都存在很多的sk_buff，这个sk_buff就是网络当中各个抽象层的数据包。</p>
-<h1 id="为什么每一层要使用相同的结构体？"><a href="#为什么每一层要使用相同的结构体？" class="headerlink" title="为什么每一层要使用相同的结构体？"></a>为什么每一层要使用相同的结构体？</h1><p>不需要每次传递都进行拷贝，如果拷贝会浪费很多cpu性能</p>
-<p>具体的实现：<br>sk_buff当中有一个叫做data的指针</p>
-<p>每次接收和发送就靠里面的data指针的移动</p>
-<ul>
-<li>接收就是逐步剥离首部的过程：</li>
-</ul>
-<p>因此指针指向整个数据包的过程是向后移动的，也就是data指针的值一直在增加</p>
-<ul>
-<li>发送就是逐步增加首部的过程：</li>
-</ul>
-<p>所以在数据加上头部之前，需要预留出一部分头部的空间，之后在每一层加上头部时data指针的值就减少，向前移动，指向到新加上的头部的开始位置</p>
-<p>以下就是整个进程操作数据发送接收的流程</p>
-<p><img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStationHexoStationHexoStationimage-20250622130850183.png" srcset="/img/loading.gif" lazyload></p>
+                <h1 id="209长度最小的子数组"><a href="#209长度最小的子数组" class="headerlink" title="209长度最小的子数组"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-size-subarray-sum/">209长度最小的子数组</a></h1><h2 id="暴力"><a href="#暴力" class="headerlink" title="暴力"></a>暴力</h2><p>首先想到的肯定是双层for循环，一次把所有的子集合全部看一遍，但是一看数据量绝对超时，于是按照昨天刷题的思想，利用双指针是否能够代替？<br>但是应该是使用不当，无法通过所有的用例，而且里面我写了一个if…else…应该是逻辑出现了问题</p>
+<h2 id="滑动窗口双指针思想"><a href="#滑动窗口双指针思想" class="headerlink" title="滑动窗口双指针思想"></a>滑动窗口双指针思想</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">minSubArrayLen</span><span class="hljs-params">(<span class="hljs-type">int</span> target, vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> minCnt = INT_MAX;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>,j=<span class="hljs-number">0</span>;j&lt;nums.<span class="hljs-built_in">size</span>();j++)&#123;<br>            <span class="hljs-comment">//i指向集合首元素， j指向集合尾元素</span><br>            sum+=nums[j];<br>            <span class="hljs-keyword">while</span>(sum&gt;=target)&#123;<span class="hljs-comment">//注意这里是while</span><br>                minCnt = <span class="hljs-built_in">min</span>(minCnt, j-i+<span class="hljs-number">1</span>);<br>                sum-=nums[i];<span class="hljs-comment">//一定是先减再++</span><br>                i++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(minCnt == INT_MAX)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> minCnt;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>根本不用写if…else！<br>大了再判断就行，小了就一直向后+就可以<br><strong>为什么里面是while而不是if?</strong><br>因为如果在里面只进行一次的缩小，下一次就到外层for循环了，j还会往右走，但此时这个逻辑是错误的，while条件里的值一直不会小于target，而且在其中会漏算掉最小的个数<br>别忘记如果没找到对应的集合需要return 0，不要落下这个条件</p>
+<p>时长：自己写30min写错了<br>看视频：10min<br>重新手撕：7min</p>
+<h1 id="59螺旋矩阵Ⅱ"><a href="#59螺旋矩阵Ⅱ" class="headerlink" title="59螺旋矩阵Ⅱ"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/spiral-matrix-ii/">59螺旋矩阵Ⅱ</a></h1><p>好的，一到模拟就废🥲</p>
+<h2 id="遵循循环不变量"><a href="#遵循循环不变量" class="headerlink" title="遵循循环不变量"></a>遵循循环不变量</h2><p>不能上一条边处理两个节点，下一条边只处理一个节点，再下一条边又一个节点都不处理了…<br>这样没有办法去进入循环，不整齐，没有规律，一定要每条边处理的大致相似<br>要定义好是左闭右开还是左闭右闭<br>在这里左闭右开是最好的选择</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">generateMatrix</span>(<span class="hljs-type">int</span> n) &#123;<br>        vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">res</span>(n, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(n));<span class="hljs-comment">//初始化的方式别写成n*n</span><br>        <span class="hljs-type">int</span> cnt = <span class="hljs-number">1</span>;<span class="hljs-comment">//用来计数存储矩阵值</span><br>        <span class="hljs-type">int</span> startx=<span class="hljs-number">0</span>,starty=<span class="hljs-number">0</span>;<span class="hljs-comment">//每一圈的起始位置</span><br>        <span class="hljs-type">int</span> offset = <span class="hljs-number">1</span>;<span class="hljs-comment">//偏移量</span><br>        <span class="hljs-type">int</span> loop = n/<span class="hljs-number">2</span>;<span class="hljs-comment">//一共要转几圈</span><br><br>        <span class="hljs-keyword">while</span>(loop--)&#123;<br>            <span class="hljs-type">int</span> i=startx, j=starty;<br>            <span class="hljs-keyword">for</span>(j;j&lt;n-offset;j++)&#123;<br>                res[i][j] = cnt++;<br>            &#125;<br>            <span class="hljs-keyword">for</span>(i;i&lt;n-offset;i++)&#123;<br>                res[i][j] = cnt++;<br>            &#125;<br>            <span class="hljs-keyword">for</span>(;j&gt;starty;j--)&#123;<br>                res[i][j] = cnt++;<br>            &#125;<br>            <span class="hljs-keyword">for</span>(;i&gt;startx;i--)&#123;<br>                res[i][j] = cnt++;<br>            &#125;<br>            startx++;<br>            starty++;<br>            offset++;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(n%<span class="hljs-number">2</span>==<span class="hljs-number">1</span>)&#123;<br>            res[startx][starty] = cnt;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>要记得n为奇数的时候手动补一下中间的数<br>我的错误点：<br>● res数组初始化弄错了，应该是两个参数，我直接n*n了<br>● while循环里的条件忘记–，而且还直接写成了n&#x2F;2–(笑一下蒜了呢)<br>时间复杂度：O(n^2)</p>
+<p>时长：自己做30~40min没做出来<br>看视频：18min<br>重新手撕：15min</p>
+<h2 id="区间和"><a href="#区间和" class="headerlink" title="区间和"></a><a target="_blank" rel="noopener" href="https://kamacoder.com/problempage.php?pid=1070">区间和</a></h2><p>简简单单一看就是前缀和，一眼暴力超时</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">1e5</span>+<span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> nums[N];<br><span class="hljs-type">int</span> sum[N];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <br>    <span class="hljs-type">int</span> n;<br>    cin &gt;&gt; n;<br>    <span class="hljs-type">int</span> a, b;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)&#123;<br>        cin &gt;&gt; nums[i];<br>        sum[i]+=nums[i]+sum[i<span class="hljs-number">-1</span>];<br>    &#125;<br>    <span class="hljs-keyword">while</span>(cin &gt;&gt; a &gt;&gt; b)&#123;<br>        cout &lt;&lt; sum[b+<span class="hljs-number">1</span>] - sum[a] &lt;&lt; endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>不过这是竞赛打多了的后遗症，喜欢用静态数组<br>就是注意一点，当a&#x3D;0的时候，如果从下标0开始存有意义的数据，此时a-1就会指向负下标了<br>时间复杂度：O(n)</p>
+<p>时长：5min</p>
+<h1 id="开发商购买土地"><a href="#开发商购买土地" class="headerlink" title="开发商购买土地"></a><a target="_blank" rel="noopener" href="https://kamacoder.com/problempage.php?pid=1044">开发商购买土地</a></h1><p>不想写了，也是前缀和思想，嘻嘻明天补吧🐽</p>
+<p><img src="https://yjmm-own-station-picture-bed.oss-cn-beijing.aliyuncs.com/HexoStation%E4%B8%80%E4%BA%8C%E5%B8%83%E5%B8%83gif%E8%A1%A8%E6%83%85%E5%8C%85%E5%8A%A8%E5%9B%BE%20(255)_%E7%88%B1%E7%BB%99%E7%BD%91_aigei_com.gif" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -309,7 +308,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
   
   
 
@@ -324,7 +323,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/base/" class="print-no-link">#base</a>
+        <a href="/tags/algorithm/" class="print-no-link">#algorithm</a>
       
     </div>
   
@@ -336,8 +335,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>从系统的角度讲，数据是怎么被传输的？</div>
-      <div>http://yjmanman.github.io/2025/06/21/从系统的角度讲，数据是怎么被传输的？/</div>
+      <div>数组题目复习Day2</div>
+      <div>http://yjmanman.github.io/2025/06/26/Day2数组题目复习/</div>
     </div>
     <div class="license-meta">
       
@@ -349,7 +348,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年6月21日</div>
+          <div>2025年6月26日</div>
         </div>
       
       
@@ -381,9 +380,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/06/25/Day1%E6%95%B0%E7%BB%84%E9%A2%98%E7%9B%AE%E5%A4%8D%E4%B9%A0/" title="数组题目复习Day1">
+                      <a href="/2025/06/27/Day3%E9%93%BE%E8%A1%A8%E5%A4%8D%E4%B9%A0%E9%A2%98%E7%9B%AE/" title="链表题目复习Day3">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数组题目复习Day1</span>
+                        <span class="hidden-mobile">链表题目复习Day3</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -391,8 +390,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/06/21/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" title="单例模式">
-                        <span class="hidden-mobile">单例模式</span>
+                      <a href="/2025/06/25/Day1%E6%95%B0%E7%BB%84%E9%A2%98%E7%9B%AE%E5%A4%8D%E4%B9%A0/" title="数组题目复习Day1">
+                        <span class="hidden-mobile">数组题目复习Day1</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
